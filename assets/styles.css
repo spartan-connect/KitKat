@@ -1,0 +1,50 @@
+body {
+background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+
+h1 {
+text-align: center;
+color: #000000;
+font-family: 'Muli', sans-serif;
+font-size: 48pt;
+}
+
+h2 {
+color: #000000;
+/* color: #01FE01; */
+font-family: 'Muli', sans-serif;
+font-size: 24pt;
+margin-left: 24px;
+}
+
+/* for profile page */
+p {
+  text-align: center
+}
+
+/* Normal white Button as seen on Google.com*/
+button {
+color: #444444;
+background: #F3F3F3;
+border: 1px #DADADA solid;
+padding: 5px 10px;
+border-radius: 2px;
+font-weight: bold;
+font-size: 9pt;
+outline: none;
+}
+
+button:hover {
+border: 1px #C6C6C6 solid;
+box-shadow: 1px 1px 1px #EAEAEA;
+color: #333333;
+background: #F7F7F7;
+}
+
+button:active {
+box-shadow: inset 1px 1px 1px #DFDFDF;
+}
+
+.wrapper {
+text-align: center;
+}
