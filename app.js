@@ -21,4 +21,8 @@ app.post('/profile', urlencodedParser, function(req, res){
   res.render('profile', {data: req.body});
 });
 
+app.get('/campusMap', function(req, res){
+  res.render('campusMap');
+});
+
 app.listen(3000);
