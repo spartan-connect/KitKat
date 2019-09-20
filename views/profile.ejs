@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
 
-     <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
-    <title>Profile pages</title>
+<head>
+  <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
 
-  </head>
+  <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
+  <title>Profile pages</title>
 
-  <body>
-    <% include partials/nav.ejs %>
-    <h1>Welcome to your profile, <%= data.username %> ! </h1>
+</head>
 
-    <div class="wrapper">
-      <button OnClick=" location.href='/' ">Back</button>
-    </div>
+<body>
+  <% include partials/nav.ejs %>
+  <h1>Welcome to your profile, <%= data.username %> ! </h1>
+
+  <div class="wrapper">
+    <button OnClick=" location.href='/' ">Back</button>
+  </div>
+
 </html>
