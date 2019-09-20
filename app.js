@@ -39,28 +39,4 @@ app.get('/campusMap', function (req, res) {
   res.render('campusMap');
 });
 
-<<<<<<< HEAD
-=======
-app.get('/channels', function(req, res){
-	userList = {
-		"users": [
-		{"name": 'Bob'},
-		{"name": 'Bob2'},
-		{"name": 'Bob3'},
-		{"name": 'John'},
-		{"name": 'Apple'},
-		{"name": 'Seed'},
-		{"name": 'Johnny'},
-		{"name": 'TestName'}
-		],
-		"messages": [
-		{"text": 'Hi everyone!'},
-		{"text": 'Hello everyone!'}
-		]
-	}
-	
-  res.render('channels', userList);
-});
->>>>>>> 5017a33a6e2103dac7354d463acea2787746c995
-
 app.listen(3000);
