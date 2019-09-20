@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+    <title>SpartanConnect - Channels</title>
+	
+	<style>
+		#messageLog {
+		width: 100%;
+		height: 90%;
+		background-color: light-blue;
+		padding: 20px;
+		}
+		
+		#onlineList {
+		float: right;
+		width: 15%;
+		height: 90%;
+		background-color: white;
+		}
+		
+		#channels_user_list {
+		list-style: none;
+		}
+		
+		#channels_msg_list {
+		height: 80vh;
+		overflow: auto;
+		position: relative; bottom: 0;
+		list-style: none;
+		padding-left: 20px;
+		}
+	</style>
+  </head>
+
+  <body>
+    <% include partials/nav.ejs %>
+    <div class="main">
+      <h2>Channels</h2>
+	  
+	  <section id = messageLog>
+		<div id = onlineList>
+		<ul id="channels_user_list">
+			<% users.forEach(function(user){ %>
+				<li><%= user.name %></li>
+			<% })%>
+		</ul>
+		</div>
+		  <ul id="channels_msg_list">
+			<li>Message1</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>There's also a lot of hard-coded messages here. It's for testing the scroll bar!</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>AAA</li>
+			<li>AAA</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>AAA</li>
+			<li>AAA</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>AAA</li>
+			<li>AAA</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>AAA</li>
+			<li>AAA</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
+			<li>AAA</li>
+			<li>AAA</li>
+				<% users.forEach(function(user){ %>
+					<li><%= user.text %></li>
+				<% })%>
+			
+		  </ul>
+	  </section>
+	  
+    </div>
+  
+  </body>
+</html>
