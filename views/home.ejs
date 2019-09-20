@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 
 <head>
   <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
@@ -25,3 +26,29 @@
 </div>
 
 </html>
+=======
+  <head>
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
+    <title>SpartanConnect</title>
+  </head>
+
+  <body>
+    <% include partials/nav.ejs %>
+    <div class="main">
+      <h1>Welcome to SpartanConect! </h1>
+      <form id="login-form" method="POST" action="/profile">
+        <center><label for="username">Username:</label></center>
+        <center><input type="text" name="username"><br></center>
+        <center><label for="password">Password:</label></center>
+        <center><input type="password" name="password"></center>
+      </form>
+    
+      <div class="wrapper">
+        <button type="submit" form="login-form">Login</button>
+      </div>
+    </div>
+  
+  </body>
+</html>
+>>>>>>> 5017a33a6e2103dac7354d463acea2787746c995

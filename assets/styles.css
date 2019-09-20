@@ -1,5 +1,7 @@
-body {
-background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+div.main {
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+  margin-left: 200px;
+  padding: 0px 10px;
 }
 
 h1 {
@@ -47,4 +49,32 @@ box-shadow: inset 1px 1px 1px #DFDFDF;
 
 .wrapper {
 text-align: center;
+}
+
+ul.sidenav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+ul.sidenav li a{
+  display: block;
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+ul.sidenav li a.active {
+  background-color: lightblue;
+  color: black;
+}
+
+ul.sidenav li a:hover:not(.active) {
+  background-color: darkblue;
+  color: white;
 }
