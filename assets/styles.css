@@ -4,6 +4,9 @@ div.main {
   padding: 0px 10px;
 }
 
+html {
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
 h1 {
 text-align: center;
 color: #000000;

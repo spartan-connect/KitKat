@@ -22,6 +22,7 @@ app.get('/', function (req, res) {
 // });
 
 // 400 status is an operation failed
+// just example of saving to db, doesn't perform login correctly
 app.post('/profile', function (req, res) {
   console.log(req.body);
   var data = new dbModels.StudentModel(req.body);
@@ -37,6 +38,27 @@ app.post('/profile', function (req, res) {
 
 app.get('/campusMap', function (req, res) {
   res.render('campusMap');
+});
+
+app.get('/channels', function (req, res) {
+  userList = {
+    "users": [
+      { "name": 'Bob' },
+      { "name": 'Bob2' },
+      { "name": 'Bob3' },
+      { "name": 'John' },
+      { "name": 'Apple' },
+      { "name": 'Seed' },
+      { "name": 'Johnny' },
+      { "name": 'TestName' }
+    ],
+    "messages": [
+      { "text": 'Hi everyone!' },
+      { "text": 'Hello everyone!' }
+    ]
+  }
+
+  res.render('channels', userList);
 });
 
 app.listen(3000);
