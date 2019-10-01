@@ -10,7 +10,10 @@
 <body>
   <% include partials/nav.ejs %>
   <div class="main">
-    <h1>Welcome to SpartanConect! </h1>
+    <h1>Welcome to SpartanConnect! </h1>
+    <img src="assets/spartanLogoLarge.png" ALIGN= "left">
+    <img src="assets/spartanLogoLarge.png" ALIGN= "right">
+
     <form id="login-form" method="POST" action="/profile">
       <center><label for="username">Username:</label></center>
       <center><input type="text" name="username"><br></center>
@@ -21,6 +24,7 @@
     <div class="wrapper">
       <button type="submit" form="login-form">Login</button>
     </div>
+
   </div>
 
 </body>
