@@ -93,3 +93,8 @@ ul.sidenav li a:hover:not(.active) {
   background-color: #939597;
   color: white;
 }
+
+.logo{
+  width: 25%;
+  height: auto;
+}
