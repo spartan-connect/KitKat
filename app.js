@@ -39,6 +39,9 @@ app.post('/profile', function (req, res) {
 app.get('/campusMap', function (req, res) {
   res.render('campusMap');
 });
+app.get('/clubDirectory', function (req, res) {
+  res.render('clubDirectory');
+});
 
 app.get('/channels', function (req, res) {
   userList = {
