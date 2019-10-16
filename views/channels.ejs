@@ -87,7 +87,8 @@
 		/* section representing user's list of channels */
 		#myChannels {
 		float: left;
-		width: 14%;
+		max-width: 14%;
+		height: 80vh;
 		padding: 5px;
 		border-style: solid;
 		border-radius: 5px;
@@ -99,7 +100,7 @@
 		#message {
 		left: 10px;
 		overflow: auto;
-		width: 60%;
+		width: 85%;
 		margin: auto;
 		height:15%;
 		position: relative; bottom: 0;
@@ -141,50 +142,53 @@
 			display: inline-block;
 		}
 		
-		/* class that represents a full message block, including user profile pic and msg body/text */
+		#chatTextField {
+		left: 10px;
+		overflow: auto;
+		width: 60%;
+		margin: auto;
+		height:15%;
+		position: relative; bottom: 0;
+		}
 	</style>
   </head>
 
   <body>
     <% include partials/nav.ejs %>
     <div class="main">
-      <h2>Channels - (current channel's name)</h2>
+	<% var channelName = "ChannelName" %>
+      <h2 style="color:#E5A823"><%= channelName %></h2>
 	  
-	  <section id = channelSection>
-		<div id = myChannels>
-			<ul id="channels_list">
-				<li>Your channels</li>
-				<li>CS160</li>
-				<li>Fun Channel</li>
-				<li>Lost and Found</li>
-				<li>Marketplace and also a very long channel name</li>
-				<% for (var i = 0; i < 40; i++) { %>
-					<li><%= "aaaaaaa" %></li>
-				<% }%>
-			</ul>
+	  <section id = "channelSection">
+		<div id="myChannels">
+			Your channels
+			<% channels.forEach(function(channel) { %>
+				<% var channelId = channel.id; %>
+				<br><br><a id="channelLink" href=""+channelId><%= channel.name %></a>
+			<% })%>
 		</div>
-		<div id = onlineList>
+		<div id = "onlineList">
 			<ul id="channels_list">
 				<li style="font-size:20px">Online</li><br>
 				<% users.forEach(function(user){ %>
+					<% if (user.status == "online") {%>
 					<li><span class="onlineDot"></span><%= user.name %></li>
-				<% })%>
+				<% }})%>
 				<br><li style="font-size:20px">Offline</li><br>
 				<% users.forEach(function(user){ %>
+					<% if (user.status == "offline") {%>
 					<li><span class="offlineDot"></span><%= user.name %></li>
-				<% })%>
+				<% }})%>
 			</ul>
 		</div>
 		<div id="channels_msg_list">
 
 		</div>
 	  </section>
-	    <div>
+	    <div id="chatTextField">
 			<br>
 			<textarea id = "message" placeholder="Type message"></textarea>
 			<button id="send">Send</button>
-			<br>
-			<button id="TESTDELETE">Testing Button to delete all messages! Not permanent</button>
 		</div>
 	  
 	</div>
@@ -203,10 +207,6 @@
 		function addMessages(message){
 			$("#channels_msg_list").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
 			clearTextField();
-		}
-		
-		function removeMessage(message) {
-			
 		}
 		
 		function getMessages(){
