@@ -12,13 +12,24 @@ GRAY:
 */
 div.main {
   background-color: rgb(0,85,162);
+  margin-top: 50px;
   margin-left: 200px;
   padding: 0px 10px;
 }
-
+body {
+  margin: 0;
+}
 html {
   background-color: rgb(0,85,162);
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 h1 {
 text-align: center;
 color: #E5A823;
@@ -70,6 +81,7 @@ ul.sidenav {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  top: 50px;
   width: 200px;
   background-color: #E5A823;
   position: fixed;
@@ -93,9 +105,40 @@ ul.sidenav li a:hover:not(.active) {
   background-color: #939597;
   color: white;
 }
-#clubSearchInput {
+
+.logo{
+  width: 25%;
+  height: auto;
+}
+
+.topnav {
+  height: 50px;
+  background-color: #E5A823;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 5px 16px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.topnav a button{
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 30px;
+}
+
+.topnav a button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.4),0 17px 50px 0 rgba(0,0,0,0.4);
+}
+
+#clubSearchInput{
   width: 90%;
-  font-size: :36px;
+  font-size: 36px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
