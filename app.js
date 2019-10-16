@@ -78,13 +78,13 @@ app.get('/channels', function (req, res) {
 });
 
 
-var Message = mongoose.model('Message',{
+var MessageTest = mongoose.model('MessageTest',{
   name : String,
   message : String
 })
 
 app.get('/messages', (req, res) => {
-  Message.find({},(err, messages)=> {
+  MessageTest.find({},(err, messages)=> {
     res.send(messages);
   })
 })
@@ -92,7 +92,7 @@ app.get('/messages', (req, res) => {
 
 app.get('/messages/:user', (req, res) => {
   var user = req.params.user
-  Message.find({name: user},(err, messages)=> {
+  MessageTest.find({name: user},(err, messages)=> {
     res.send(messages);
   })
 })
@@ -100,14 +100,14 @@ app.get('/messages/:user', (req, res) => {
 
 app.post('/messages', async (req, res) => {
   try{
-    var message = new Message(req.body);
+    var message = new MessageTest(req.body);
 
     var savedMessage = await message.save()
       console.log('saved');
 
-    var censored = await Message.findOne({message:'badword'});
+    var censored = await MessageTest.findOne({message:'badword'});
       if(censored)
-        await Message.remove({_id: censored.id})
+        await MessageTest.remove({_id: censored.id})
       else
         io.emit('message', req.body);
       res.sendStatus(200);
@@ -121,7 +121,6 @@ app.post('/messages', async (req, res) => {
   }
 
 })
-
 
 
 io.on('connection', () =>{
