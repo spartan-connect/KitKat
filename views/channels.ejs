@@ -3,102 +3,227 @@
   <head>
     <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
     <title>SpartanConnect - Channels</title>
-	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  	<script src="/socket.io/socket.io.js"></script>
 	<style>
 		#channelSection {
 		width: 100%;
-		height: 90%;
+		height: 80%;
 		}
 		
+		/* general format for a list (list with elements) in Channels */
 		#channels_list {
+		height: 80vh;
 		list-style: none;
+		overflow-y: auto;
 		}
 		
+		/* custom scrollbar for channels list */
+		#channels_list::-webkit-scrollbar {
+		width: 10px;
+		}
+		#channels_list::-webkit-scrollbar-track {
+		background: #0055A2;
+		border-radius: 10px;
+		}
+		#channels_list::-webkit-scrollbar-thumb {
+		background: #E5A823;
+		border-radius: 10px;
+		}
+		#channels_list::-webkit-scrollbar-thumb:hover {
+		background: #E5DD23;
+		}
+		
+		/* list of online users */
 		#onlineList {
 		float: right;
-		width: 15%;
-		height: 90%;
-		background-color: white;
+		width: 14%;
+		height: 80%;
+		background-color: #99ceff;
+		border-style: solid;
+		border-radius: 5px;
+		border-color: #000000;
+		padding-left: 2px;
 		}
 		
+		/* the array of messages posted in the channel */
 		#channels_msg_list {
-		left: 10vh;
-		width: 65%;
+		left: 10px;
+		max-width: 65%;
 		height: 80vh;
-		overflow: auto;
+		overflow-y: auto;
+		overflow-x: auto;
 		position: relative; bottom: 0;
-		list-style: none;
 		padding-left: 20px;
-		background-color: #9EF9FF;
+		padding-right: 5px;
+		background-color: #FFFFFF;
+		border-style: solid;
+		border-radius: 10px;
+		border-color: #000000;
 		}
 		
+		/* custom scrollbar for messages */
+		#channels_msg_list::-webkit-scrollbar {
+		width: 10px;
+		}
+
+		#channels_msg_list::-webkit-scrollbar-track {
+		background: #0055A2;
+		border-radius: 10px;
+		}
+
+		#channels_msg_list::-webkit-scrollbar-thumb {
+		background: #E5A823;
+		border-radius: 10px;
+		}
+
+		#channels_msg_list::-webkit-scrollbar-thumb:hover {
+		background: #E5DD23;
+		}
+		
+		/* section representing user's list of channels */
 		#myChannels {
 		float: left;
-		width: 10%;
-		padding-right: 10px;
+		max-width: 14%;
+		height: 80vh;
+		padding: 5px;
+		border-style: solid;
+		border-radius: 5px;
+		border-color: #000000;
+		background-color: #99ceff;
+		}
+		
+		/* the text field in which the user can enter messages into */
+		#message {
+		left: 10px;
+		overflow: auto;
+		width: 85%;
+		margin: auto;
+		height:15%;
+		position: relative; bottom: 0;
+		padding-left: 20px;
+		padding-right: 5px;
+		resize: none;
+		border-style: solid;
+		border-radius: 5px;
+		border-color: #000000;
+		background-color: #e6f3ff;
+		}
+		
+		/* send message [to channel] button */
+		#send {
+		position: relative;
+		left: 10px;
+		bottom: 11px;
+		}
+		
+		/* circle representing online user */
+		.onlineDot {
+			height: 8px;
+			width: 8px;
+			border-color: #00CC00;
+			border-style: solid;
+			background-color: #00FF00;
+			border-radius: 50%;
+			display: inline-block;
+		}
+		
+		/* circle representing offline user */
+		.offlineDot {
+			height: 8px;
+			width: 8px;
+			border-color: #757575;
+			border-style: solid;
+			background-color: #909090;
+			border-radius: 50%;
+			display: inline-block;
+		}
+		
+		#chatTextField {
+		left: 10px;
+		overflow: auto;
+		width: 60%;
+		margin: auto;
+		height:15%;
+		position: relative; bottom: 0;
 		}
 	</style>
   </head>
 
   <body>
     <% include partials/nav.ejs %>
-    <div id="main" class="main">
-      <h2>Channels - (current channel's name)</h2>
+    <div class="main">
+	<% var channelName = "ChannelName" %>
+      <h2 style="color:#E5A823"><%= channelName %></h2>
 	  
-	  <section id = channelSection>
-		<div id = myChannels>
+	  <section id = "channelSection">
+		<div id="myChannels">
+			Your channels
+			<% channels.forEach(function(channel) { %>
+				<% var channelId = channel.id; %>
+				<br><br><a id="channelLink" href=""+channelId><%= channel.name %></a>
+			<% })%>
+		</div>
+		<div id = "onlineList">
 			<ul id="channels_list">
-				<li>CS160</li>
-				<li>Fun Channel</li>
-				<li>Lost and Found</li>
-				<li>Marketplace</li>
+				<li style="font-size:20px">Online</li><br>
+				<% users.forEach(function(user){ %>
+					<% if (user.status == "online") {%>
+					<li><span class="onlineDot"></span><%= user.name %></li>
+				<% }})%>
+				<br><li style="font-size:20px">Offline</li><br>
+				<% users.forEach(function(user){ %>
+					<% if (user.status == "offline") {%>
+					<li><span class="offlineDot"></span><%= user.name %></li>
+				<% }})%>
 			</ul>
 		</div>
-		<div id = onlineList>
-			<ul id="channels_list">
-				<li>Currently online:</li><br>
-				<% users.forEach(function(user){ %>
-					<li><%= user.name %></li>
-				<% })%>
-			</ul>
+		<div id="channels_msg_list">
+
 		</div>
-		  <ul id="channels_msg_list">
-			<li>Message1</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>There's also a lot of hard-coded messages here. It's for testing the scroll bar!</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>AAA</li>
-			<li>AAA</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>AAA</li>
-			<li>AAA</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>These messages are hard-coded messages for the prototype; the real messages should be read from a database and then shown here.</li>
-			<li>AAA</li>
-			<li>AAA</li>
-				<% users.forEach(function(user){ %>
-					<li><%= user.text %></li>
-				<% })%>
-			
-		  </ul>
 	  </section>
+	    <div id="chatTextField">
+			<br>
+			<textarea id = "message" placeholder="Type message"></textarea>
+			<button id="send">Send</button>
+		</div>
 	  
-    </div>
+	</div>
+	
+
+	<script>
+		var socket = io();
+		$(() => {
+			$("#send").click(()=>{
+				sendMessage({name: "TempName", message: $("#message").val()});
+			})
+			getMessages()
+		})
+		socket.on('message', addMessages)
+		
+		function addMessages(message){
+			$("#channels_msg_list").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
+			clearTextField();
+		}
+		
+		function getMessages(){
+			$.get('http://localhost:3000/messages', (data) => {
+				data.forEach(addMessages);
+			})
+		}
+
+		function sendMessage(message){
+			$.post('http://localhost:3000/messages', message)
+		}
+		
+		function clearTextField() {
+			document.getElementById("message").value = "";
+		}
+		
+	</script>
   
   </body>
 </html>
