@@ -29,16 +29,41 @@ app.get('/', function (req, res) {
 // 400 status is an operation failed
 // just example of saving to db, doesn't perform login correctly
 app.post('/profile', function (req, res) {
+  var count = Object.keys(req.body).length;
+  console.log(count);
   console.log(req.body);
-  var data = new dbModels.StudentModel(req.body);
-  data.save()
-    .then(info => {
-      console.log("Student Info Saved to DB");
-    })
-    .catch(err => {
-      res.status(400).send("Unable to save to DB");
-    })
-  res.render('profile', { data: req.body });
+  // Authorize login
+  if (count == 2) {
+    dbModels.StudentModel.find(req.body, function (err, student) {
+      if (err) {
+        console.log("Can't Find User");
+        res.render('home');
+      }
+      console.log(student);
+      console.log(student[0].username);
+      console.log(student[0].password);
+      if (req.body.username == student[0].username && req.body.password == student[0].password) {
+        console.log('Student Account was found');
+        res.render('profile', { data: req.body });
+      }
+    });
+  }
+  // save form information into DB
+  else {
+    var data = new dbModels.StudentModel(req.body);
+    data.save()
+      .then(info => {
+        console.log("Student Info Saved to DB");
+      })
+      .catch(err => {
+        res.status(400).send("Unable to save to DB");
+      });
+    res.render('profile', { data: req.body });
+  }
+});
+
+app.get('/newUserForm', function (req, res) {
+  res.render('newUserForm');
 });
 
 app.get('/campusMap', function (req, res) {
