@@ -25,15 +25,20 @@ app.get('/', function (req, res) {
 // just example of saving to db, doesn't perform login correctly
 app.post('/profile', function (req, res) {
   console.log(req.body);
-  var data = new dbModels.StudentModel(req.body);
-  data.save()
-    .then(info => {
-      console.log("Student Info Saved to DB");
-    })
-    .catch(err => {
-      res.status(400).send("Unable to save to DB");
-    })
+  console.log(req.body.name);
+  /* var data = new dbModels.StudentModel(req.body);
+   data.save()
+     .then(info => {
+       console.log("Student Info Saved to DB");
+     })
+     .catch(err => {
+       res.status(400).send("Unable to save to DB");
+     })*/
   res.render('profile', { data: req.body });
+});
+
+app.get('/newUserForm', function (req, res) {
+  res.render('newUserForm');
 });
 
 app.get('/campusMap', function (req, res) {

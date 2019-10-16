@@ -157,3 +157,59 @@ ul.sidenav li a:hover:not(.active) {
 #clublist li a:hover:not(.header) {
   background-color: #939597;
 }
+
+#newUser a{
+  color: black;
+}
+
+.newUser-form {
+  font: 95% Arial, Helvetica, sans-serif;
+	max-width: 400px;
+	margin: 10px auto;
+	padding: 16px;
+  background: #F7F7F7;
+}
+
+.newUser-form h1 {
+  background: #E5A823;
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	color: #0055A2;
+	margin: -16px -16px 16px -16px;
+}
+
+.newUser-form input[type="text"],
+.newUser-form input[type="email"]
+{
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	background: #fff;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	color: #555;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+
+.newUser-form input[type="submit"]{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 3%;
+	background: #E5A823;
+	border-bottom: 2px solid #E5A823;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;	
+	color: #0055A2;
+}
+
+.newUser-form input[type="submit"]:hover {
+  background: rgb(177, 127, 19);
+}
