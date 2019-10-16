@@ -48,26 +48,35 @@ app.get('/clubDirectory', function (req, res) {
   res.render('clubDirectory');
 });
 
+// these are the temporary databases
 app.get('/channels', function (req, res) {
-  userList = {
+  channelData = {
     "users": [
-      { "name": 'Bob' },
-      { "name": 'Bob2' },
-      { "name": 'Bob3' },
-      { "name": 'John' },
-      { "name": 'Apple' },
-      { "name": 'Seed' },
-      { "name": 'Johnny' },
-      { "name": 'TestName' }
+      { "name": 'Bob', "status": 'offline'},
+      { "name": 'Bob2', "status": 'online'},
+      { "name": 'Bob3', "status": 'online'},
+      { "name": 'John', "status": 'offline'},
+      { "name": 'Apple', "status": 'offline'},
+      { "name": 'Seed', "status": 'offline'},
+      { "name": 'Johnny', "status": 'online' },
+      { "name": 'TestName', "status": 'offline' }
     ],
     "messages": [
       { "text": 'Hi everyone!' },
       { "text": 'Hello everyone!' }
-    ]
+    ],
+	"channels": [
+		{ "name": 'CS160', "ID": 0},
+		{ "name": 'Fun Channel', "ID": 1},
+		{ "name": 'Lost and Found', "ID": 2},
+		{ "name": 'Marketplace!', "ID": 3},
+		{ "name": 'AveryLongChannelNameAaaaaaaa', "ID": 4}
+	]
   }
-
-  res.render('channels', userList);
+  
+  res.render('channels', channelData);
 });
+
 
 var Message = mongoose.model('Message',{
   name : String,
@@ -119,7 +128,7 @@ io.on('connection', () =>{
   console.log('a user is connected')
 })
 
-mongoose.connect(dbUrl ,{useMongoClient : true} ,(err) => {
+mongoose.connect(dbUrl ,(err) => {
   console.log('mongodb connected',err);
 })
 
