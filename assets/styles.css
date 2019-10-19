@@ -213,3 +213,7 @@ ul.sidenav li a:hover:not(.active) {
 .newUser-form input[type="submit"]:hover {
   background: rgb(177, 127, 19);
 }
+
+.error {
+  color: red;
+}

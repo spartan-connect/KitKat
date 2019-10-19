@@ -37,7 +37,7 @@ app.post('/profile', function (req, res) {
     dbModels.StudentModel.find(req.body, function (err, student) {
       if (student.length == 0) {
         console.log("Can't Find User");
-        res.render('newUserForm');
+        res.render('home', {error: 'Incorrect Username/Password'});
       }
 
       else if (req.body.username == student[0].username && req.body.password == student[0].password) {
