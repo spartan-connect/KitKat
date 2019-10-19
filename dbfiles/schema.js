@@ -1,18 +1,34 @@
 // Storing images: https://medium.com/@alvenw/how-to-store-images-to-mongodb-with-node-js-fb3905c37e6d*/
 var mongoose = require('mongoose');
+var keys = require('../config/keys');
 mongoose.promise = global.promise;
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 // connect to database
-mongoose.connect('mongodb+srv://admin:admin101@cluster0-yb2mr.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connect(keys.dbURL);
+
+// Lets you use 'new Schema' instead of 'new mongoose.Schema' everywhere
+var {
+    Schema
+} = mongoose;
 
 //Schema's
-var StudentSchema = new mongoose.Schema({
+// Making user schema for google OAuth
+var UserSchema = new Schema({
+    googleId: String
+});
+
+var User = mongoose.model('User', UserSchema);
+
+var StudentSchema = new Schema({
     username: String,
     email: String,
     password: String,
     classList: Array,
-    photo: { data: Buffer, contentType: String },
+    photo: {
+        data: Buffer,
+        contentType: String
+    },
     bio: String,
     club: [String],
     calender: String,
@@ -20,23 +36,26 @@ var StudentSchema = new mongoose.Schema({
     Messages: Array
 });
 
-var MessageSchema = new mongoose.Schema({
+var MessageSchema = new Schema({
     sender: String,
     sentTo: String,
     text: String
 });
 
-var FacultySchema = new mongoose.Schema({
+var FacultySchema = new Schema({
     username: String,
     name: String,
     contact: String,
     email: String,
     password: String,
-    Photo: { data: Buffer, contentType: String },
+    Photo: {
+        data: Buffer,
+        contentType: String
+    },
     bio: String
 })
 
-var CampusPDSchema = new mongoose.Schema({
+var CampusPDSchema = new Schema({
     username: String,
     password: String,
     contact: String,
@@ -48,11 +67,14 @@ var CampusPD = mongoose.model('CampusPD', CampusPDSchema);
 var Faculty = mongoose.model('Faculty', FacultySchema);
 var Student = mongoose.model('Student', StudentSchema);
 
-var CalenderSchema = new mongoose.Schema({
-    calenderEvents: { type: mongoose.Schema.Types.ObjectId, ref: 'CalenderEvent' }
+var CalenderSchema = new Schema({
+    calenderEvents: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CalenderEvent'
+    }
 });
 
-var CalenderEventSchema = new mongoose.Schema({
+var CalenderEventSchema = new Schema({
     date: Date,
     title: String,
     description: String
@@ -61,39 +83,51 @@ var CalenderEventSchema = new mongoose.Schema({
 var Calender = mongoose.model('Calender', CalenderSchema);
 var CalenderEvent = mongoose.model('CalenderEvent', CalenderEventSchema);
 
-var ClubEventSchema = new mongoose.Schema({
+var ClubEventSchema = new Schema({
     name: String,
     description: String,
     contact: String,
-    Photo: { data: Buffer, contentType: String }
+    Photo: {
+        data: Buffer,
+        contentType: String
+    }
 });
 
 var ClubEvent = mongoose.model('ClubEvent', ClubEventSchema);
 // https://stackoverflow.com/questions/18001478/referencing-another-schema-in-mongoose
-var ClubSchema = mongoose.Schema({
+var ClubSchema = new Schema({
     name: String,
     description: String,
     memberList: [String],
-    calender: { type: mongoose.Schema.Types.ObjectId, ref: 'Calender' }
+    calender: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Calender'
+    }
 });
 
 var Club = mongoose.model('Club', ClubSchema);
 
-var FacultyAnnouncementSchema = new mongoose.Schema({
+var FacultyAnnouncementSchema = new Schema({
     name: String,
     description: String,
     contact: String,
-    photo: { data: Buffer, contentType: String }
+    photo: {
+        data: Buffer,
+        contentType: String
+    }
 });
 
-var JobPostSchema = new mongoose.Schema({
+var JobPostSchema = new Schema({
     name: String,
     description: String,
     contact: String,
-    Photo: { data: Buffer, contentType: String }
+    Photo: {
+        data: Buffer,
+        contentType: String
+    }
 });
 
-var SafteyWarningSchema = new mongoose.Schema({
+var SafteyWarningSchema = new Schema({
     title: String,
     urgency: String,
     description: String
@@ -104,14 +138,14 @@ var JobPost = mongoose.model('JobPost', JobPostSchema);
 var SafteyWarning = mongoose.model('SafteyWarning', SafteyWarningSchema);
 
 // Saving array of Strings: https://stackoverflow.com/questions/35509611/mongoose-save-array-of-strings
-var ChannelSchema = new mongoose.Schema({
+var ChannelSchema = new Schema({
     Name: String,
     MemberList: [String]
 });
 
 var Channel = mongoose.model('Channel', ChannelSchema);
 
-var GrouptChatSchema = new mongoose.Schema({
+var GrouptChatSchema = new Schema({
     Name: String,
     memberList: [String]
 });
@@ -132,5 +166,6 @@ module.exports = {
     ClubEventModel: ClubEvent,
     FacultyAnnouncementModel: FacultyAnnouncement,
     JobPostModel: JobPost,
-    SafteyWarningModel: SafteyWarning
+    SafteyWarningModel: SafteyWarning,
+    UserModel: User
 };
