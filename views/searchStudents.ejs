@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+  <title>Search For A Student</title>
+</head>
+
+<body>
+  <%var arrayOfStudents = [];%>
+  <% include partials/nav.ejs %>
+  <div class="main">
+    <h1>Search For A Student</h1>
+
+    <input type="text" id="studentSearchInput" onkeyup="studentSearchFunction()" placeholder="Search for A SJSU Student">
+
+</html>
+<script>
+function studentSearchFunction() {
+  // Declare variables
+  var input, filter;
+  input = document.getElementById('studentSearchInput');
+  filter = input.value.toUpperCase();
+  arrayOfStudents = dbModels.StudentModel.getElementsByName('name');
+
+  <% if(arrayOfStudents.size > 0){ %>
+    <ul id="studentList">
+      <% for (var i = 0; i < arrayOfStudents.size;  i++ ) { %>
+        var s = arrayOfStudents[i];
+        <li><a href="#"><%= s%></a></li>
+      <% } %>
+    </ul>
+  <% } else{ %>
+    <h1>No Results</h1>
+  <% } %>
+}
+</script>
