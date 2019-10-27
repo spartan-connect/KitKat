@@ -77,10 +77,10 @@ app.get('/searchStudents', function (req, res) {
   var arrayOfStudents = [];
   dbModels.StudentModel.find(function (err, student){
     student.forEach(function(s){
-         arrayOfStudents.push(JSON.stringify(s.username));
+      arrayOfStudents.push(s.username);
     });
+    res.render('searchStudents', {data: arrayOfStudents});
   });
-  res.render('searchStudents', {data: arrayOfStudents});
 });
 
 // these are the temporary databases
