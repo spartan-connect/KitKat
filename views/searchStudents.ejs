@@ -9,33 +9,34 @@
   <% include partials/nav.ejs %>
   <div class="main">
     <h1>Search For A Student</h1>
-    <%var input, filter;%>
-    <%input = ""%>
-    <%filter = ""%>
-    <input type="text" id="studentSearchInput" placeholder="Search for A SJSU Student" onkeyup="clubSearchFunction()">
+    <input type="text" id="studentSearchInput" placeholder="Search for A SJSU Student" onkeyup="studentSearchFunction()">
+    <ul id="studentList">
+      <%data.forEach(function(string){%>
+        <li><a href="#"><%=string%></a></li>
+      <%});%>
+    </ul>
   </div>
 </body>
 
 </html>
-<script type="text/javascript">
-function clubSearchFunction() {
+<script>
+function studentSearchFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById('studentSearchInput');
-  filter = input.value;
-  console.log(input);
-  data.find(function (err, student){
-    if (student.length == 0){
-      console.log("none found");
-      <p>No Results</p>
-     }else{
-       student.forEach(function(s){
-        var name = JSON.stringify(s.username);
-        console.log(name);
-        if (name.includes(filter)){
-          console.log("Match found");
-          <p>name</p>
-        }
-       });
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("studentList");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
     }
-    });
+  }
 }
 </script>
