@@ -45,7 +45,7 @@ app.post('/profile', function (req, res) {
         console.log(student[0].username);
         console.log(student[0].password);
         console.log('Student Account was found');
-        res.render('profile', { data: req.body });
+        res.render('profile', {data: student[0]});
       }
     });
   }
