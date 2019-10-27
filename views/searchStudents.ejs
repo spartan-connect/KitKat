@@ -6,31 +6,36 @@
 </head>
 
 <body>
-  <%var arrayOfStudents = [];%>
   <% include partials/nav.ejs %>
   <div class="main">
     <h1>Search For A Student</h1>
-
-    <input type="text" id="studentSearchInput" onkeyup="studentSearchFunction()" placeholder="Search for A SJSU Student">
+    <%var input, filter;%>
+    <%input = ""%>
+    <%filter = ""%>
+    <input type="text" id="studentSearchInput" placeholder="Search for A SJSU Student" onkeyup="clubSearchFunction()">
+  </div>
+</body>
 
 </html>
-<script>
-function studentSearchFunction() {
-  // Declare variables
-  var input, filter;
+<script type="text/javascript">
+function clubSearchFunction() {
   input = document.getElementById('studentSearchInput');
-  filter = input.value.toUpperCase();
-  arrayOfStudents = dbModels.StudentModel.getElementsByName('name');
-
-  <% if(arrayOfStudents.size > 0){ %>
-    <ul id="studentList">
-      <% for (var i = 0; i < arrayOfStudents.size;  i++ ) { %>
-        var s = arrayOfStudents[i];
-        <li><a href="#"><%= s%></a></li>
-      <% } %>
-    </ul>
-  <% } else{ %>
-    <h1>No Results</h1>
-  <% } %>
+  filter = input.value;
+  console.log(input);
+  data.find(function (err, student){
+    if (student.length == 0){
+      console.log("none found");
+      <p>No Results</p>
+     }else{
+       student.forEach(function(s){
+        var name = JSON.stringify(s.username);
+        console.log(name);
+        if (name.includes(filter)){
+          console.log("Match found");
+          <p>name</p>
+        }
+       });
+    }
+    });
 }
 </script>

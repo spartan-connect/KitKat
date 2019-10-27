@@ -74,7 +74,7 @@ app.get('/clubDirectory', function (req, res) {
   res.render('clubDirectory');
 });
 app.get('/searchStudents', function (req, res) {
-  res.render('searchStudents', dbModels);
+  res.render('searchStudents', {data: dbModels.StudentModel});
 });
 
 // these are the temporary databases
