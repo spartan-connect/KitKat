@@ -2,6 +2,7 @@
 <html>
 <head>
   <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>Club Directory</title>
 
 </head>
@@ -9,423 +10,432 @@
 <body>
   <% include partials/nav.ejs %>
   <div class="main">
-    <h1>SJSU Club Directory</h1>
+    <div style="height: 25px;"></div>
+    <h1 style="font-size: 4em;">SJSU Club Directory</h1>
 
-    <input type="text" id="clubSearchInput" onkeyup="clubSearchFunction()" placeholder="Search for SJSU Clubs">
+    <input 
+      type="text" 
+      id="clubSearchInput" 
+      onkeyup="clubSearchFunction()" 
+      placeholder="Search for SJSU Clubs" 
+      class="form-control"
+      style="margin: 10px auto; max-width: 75%;">
 
-    <ul id="clubList">
-      <li><a href="#">3D Printing Club</a></li>
-      <li><a href="#">A D.O.S.E of Kindness</a></li>
-      <li><a href="#">Abstraction</a></li>
-      <li><a href="#">ACM SIGGRAPH Student Chapter at SJSU</a></li>
-      <li><a href="#">Active Minds at SJSU</a></li>
-      <li><a href="#">Acts2 Christian Fellowship at SJSU</a></li>
-      <li><a href="#">Advanced Space Exploration</a></li>
-      <li><a href="#">Advancement Institute for Management</a></li>
-      <li><a href="#">Aero Meets Astro</a></li>
-      <li><a href="#">Affordable Engineering Design and Development</a></li>
-      <li><a href="#">African American Commencement Committee</a></li>
-      <li><a href="#">AICHE</a></li>
-      <li><a href="#">AIESEC</a></li>
-      <li><a href="#">AkbayanSJSU</a></li>
-      <li><a href="#">Alabaster House of Prayer</a></li>
-      <li><a href="#">All Comedy SJSU</a></li>
-      <li><a href="#">ALMAS</a></li>
-      <li><a href="#">Alpha Epsilon Pi</a></li>
-      <li><a href="#">Alpha Eta Rho</a></li>
-      <li><a href="#">Alpha Kappa Delta Phi Sorority</a></li>
-      <li><a href="#">Alpha Kappa Omega</a></li>
-      <li><a href="#">Alpha Kappa Omicron</a></li>
-      <li><a href="#">Alpha Kappa Psi</a></li>
-      <li><a href="#">Alpha Omicron Pi</a></li>
-      <li><a href="#">Alpha Phi</a></li>
-      <li><a href="#">Alpha Phi Omega</a></li>
-      <li><a href="#">Alpha Phi Sigma</a></li>
-      <li><a href="#">Alpha Sigma Phi</a></li>
-      <li><a href="#">Alpha Tau Delta</a></li>
-      <li><a href="#">Alpha Tau Omega Fraternity</a></li>
-      <li><a href="#">Alpha Xi Delta</a></li>
-      <li><a href="#">Amateur Radio Club</a></li>
-      <li><a href="#">American Association of University Women</a></li>
-      <li><a href="#">American Concrete Institute</a></li>
-      <li><a href="#">American Library Association Student Chapter</a></li>
-      <li><a href="#">American Society of Civil Engineers</a></li>
-      <li><a href="#">American Society of Mechanical Engineers at SJSU</a></li>
-      <li><a href="#">Anime Club at SJSU</a></li>
-      <li><a href="#">Anthropology Club</a></li>
-      <li><a href="#">Apartments Council</a></li>
-      <li><a href="#">AR/VR Club</a></li>
-      <li><a href="#">Armenian Student Association</a></li>
-      <li><a href="#">Arnold Air Society</a></li>
-      <li><a href="#">Art History Association</a></li>
-      <li><a href="#">Ashurian Club</a></li>
-      <li><a href="#">Asian American Christian Fellowship</a></li>
-      <li><a href="#">ASL at SJSU</a></li>
-      <li><a href="#">Assembly of Nurse Scholars</a></li>
-      <li><a href="#">Atmiya Care Charity</a></li>
-      <li><a href="#">Badminton Club at Club Sports</a></li>
-      <li><a href="#">Best Buddies</a></li>
-      <li><a href="#">Beta Alpha Psi</a></li>
-      <li><a href="#">Beta Beta Beta Biological Honor Society</a></li>
-      <li><a href="#">Beta Theta Pi</a></li>
-      <li><a href="#">Beta Upsilon Chapter of Alpha Omega Epsilon</a></li>
-      <li><a href="#">Billiard Club</a></li>
-      <li><a href="#">Biology Students Association</a></li>
-      <li><a href="#">Biomedical Engineering Society</a></li>
-      <li><a href="#">Black Campus Ministries </a></li>
-      <li><a href="#">Black Honor Society</a></li>
-      <li><a href="#">Black Male Collective</a></li>
-      <li><a href="#">Black Student Union</a></li>
-      <li><a href="#">Black Women's Collective</a></li>
-      <li><a href="#">BlockLegion</a></li>
-      <li><a href="#">BMEidea</a></li>
-      <li><a href="#">Bowling Team at SJSU</a></li>
-      <li><a href="#">Braven at SJSU</a></li>
-      <li><a href="#">CADRE Student Organization</a></li>
-      <li><a href="#">California Nursing Students' Association</a></li>
-      <li><a href="#">Campuses Organized and United for Good Health at SJSU</a></li>
-      <li><a href="#">Career Development Club</a></li>
-      <li><a href="#">Center Stage Productions</a></li>
-      <li><a href="#">ChAD Club</a></li>
-      <li><a href="#">Chi Epsilon Chapter 79</a></li>
-      <li><a href="#">Chicano Commencement</a></li>
-      <li><a href="#">Chinese Campus Fellowship</a></li>
-      <li><a href="#">Chinese Student Association</a></li>
-      <li><a href="#">CHIPISIGMA</a></li>
-      <li><a href="#">Choirs at SJSU</a></li>
-      <li><a href="#">Christians on Campus</a></li>
-      <li><a href="#">Circle K International</a></li>
-      <li><a href="#">Classics Hall Government</a></li>
-      <li><a href="#">Club Figure Skating</a></li>
-      <li><a href="#">Club Softball at SJSU</a></li>
-      <li><a href="#">Club Swimming</a></li>
-      <li><a href="#">College Awareness Network</a></li>
-      <li><a href="#">College Republicans at SJSU</a></li>
-      <li><a href="#">COMM Network Club</a></li>
-      <li><a href="#">Competitive Dance Team- Sirens of Sparta</a></li>
-      <li><a href="#">Computer Electronics and Networking Technology Club</a></li>
-      <li><a href="#">Computer Science Club at SJSU</a></li>
-      <li><a href="#">Counselor Education Graduate Organization</a></li>
-      <li><a href="#">Cru</a></li>
-      <li><a href="#">Cube^3</a></li>
-      <li><a href="#">CVC Hall Government</a></li>
-      <li><a href="#">Cyber Spartans</a></li>
-      <li><a href="#">Cycling Club at SJSU</a></li>
-      <li><a href="#">Daedelus Rocket Engineering and Manufacturing</a></li>
-      <li><a href="#">Data Science Club</a></li>
-      <li><a href="#">Delta Sigma Phi</a></li>
-      <li><a href="#">Delta Sigma Pi</a></li>
-      <li><a href="#">Delta Zeta</a></li>
-      <li><a href="#">Design Build Fly at SJSU</a></li>
-      <li><a href="#">Destino</a></li>
-      <li><a href="#">DREAM</a></li>
-      <li><a href="#">Dungeons & Dragons at SJSU</a></li>
-      <li><a href="#">Early Childhood Student-Alumni Network</a></li>
-      <li><a href="#">Eco Representatives</a></li>
-      <li><a href="#">Economics Club at SJSU</a></li>
-      <li><a href="#">El Espartano Noticias</a></li>
-      <li><a href="#">Electric Vehicle Wireless Charging Research Club</a></li>
-      <li><a href="#">Engineering Management Student Association</a></li>
-      <li><a href="#">Engineers Without Borders</a></li>
-      <li><a href="#">English Lit & Writing Professional Development Club</a></li>
-      <li><a href="#">Environmental Resource Center</a></li>
-      <li><a href="#">Epic Movement</a></li>
-      <li><a href="#">Epsilon Pi Tau</a></li>
-      <li><a href="#">Esports at SJSU</a></li>
-      <li><a href="#">Film Production Society</a></li>
-      <li><a href="#">Finance and Economics Women's Club SJSU Chapter</a></li>
-      <li><a href="#">Financial Management Association</a></li>
-      <li><a href="#">First Love SJSU</a></li>
-      <li><a href="#">Forensic Science Students</a></li>
-      <li><a href="#">Fresh Pressed Print Makers' Guild</a></li>
-      <li><a href="#">Game Development Club at SJSU</a></li>
-      <li><a href="#">Geology Club</a></li>
-      <li><a href="#">Girls Who Code Loop</a></li>
-      <li><a href="#">Global Medical Brigades</a></li>
-      <li><a href="#">Global Operations Management Association</a></li>
-      <li><a href="#">Global Student Network</a></li>
-      <li><a href="#">Google Developer Student Club</a></li>
-      <li><a href="#">Graduate Business Student Association</a></li>
-      <li><a href="#">Grupo Folklorico Luna y Sol</a></li>
-      <li><a href="#">Gymnastics Club</a></li>
-      <li><a href="#">Habesha Students Association</a></li>
-      <li><a href="#">Health Science Honor Society</a></li>
-      <li><a href="#">Her Campus SJSU</a></li>
-      <li><a href="#">Hindu Yuva</a></li>
-      <li><a href="#">History Club/Phi Alpha Theta</a></li>
-      <li><a href="#">Hmong Student Association</a></li>
-      <li><a href="#">Hong Kong Student Association</a></li>
-      <li><a href="#">Hoplite</a></li>
-      <li><a href="#">Hospitality Financial and Technology Professionals</a></li>
-      <li><a href="#">Human Factors and Ergonomics Society Student Chapter</a></li>
-      <li><a href="#">Ice Hockey at SJSU</a></li>
-      <li><a href="#">IDEAS</a></li>
-      <li><a href="#">IDSA Student Chapter at SJSU</a></li>
-      <li><a href="#">IEEE EPS-CS</a></li>
-      <li><a href="#">Improv Club</a></li>
-      <li><a href="#">Inclusively Recognizing Student Parents</a></li>
-      <li><a href="#">Indian Student Organization</a></li>
-      <li><a href="#">Information Systems Audit and Control Association</a></li>
-      <li><a href="#">Institute for Electrical and Electronics Engineers Student Branch at SJSU</a></li>
-      <li><a href="#">Institute of Industrial and Systems Engineers</a></li>
-      <li><a href="#">Institute of Management Accountants</a></li>
-      <li><a href="#">Institute of Transportation Engineers</a></li>
-      <li><a href="#">Interfraternity Council</a></li>
-      <li><a href="#">Interior Design Student Organization</a></li>
-      <li><a href="#">International Business Association</a></li>
-      <li><a href="#">International Culture and Communication Association</a></li>
-      <li><a href="#">International Youth Fellowship</a></li>
-      <li><a href="#">InterVarsity Christian Fellowship</a></li>
-      <li><a href="#">Iota Phi Theta Fraternity</a></li>
-      <li><a href="#">ISPE</a></li>
-      <li><a href="#">Japanese Student Society</a></li>
-      <li><a href="#">Jewelry and Small Metals Guild</a></li>
-      <li><a href="#">JSA Career at SJSU</a></li>
-      <li><a href="#">Juggle at SJSU</a></li>
-      <li><a href="#">Kappa Alpha Psi Fraternity</a></li>
-      <li><a href="#">Kappa Delta</a></li>
-      <li><a href="#">Kappa Kappa Psi</a></li>
-      <li><a href="#">Kappa Sigma Fraternity</a></li>
-      <li><a href="#">Kendo and Naginata Club</a></li>
-      <li><a href="#">Kinesiology Ambassadors Club</a></li>
-      <li><a href="#">Korean Entertainment Student Association</a></li>
-      <li><a href="#">Korean Student Association</a></li>
-      <li><a href="#">Lambda Sigma Gamma Sorority</a></li>
-      <li><a href="#">Lambda Theta Alpha Latin Sorority</a></li>
-      <li><a href="#">Lambda Theta Phi Latin Fraternity</a></li>
-      <li><a href="#">Latino Business Student Association</a></li>
-      <li><a href="#">Latter-Day Saint Student Association</a></li>
-      <li><a href="#">Lebanese Social Club</a></li>
-      <li><a href="#">Linguistics and Language Development Student Association</a></li>
-      <li><a href="#">M.E.Ch.A de SJSU</a></li>
-      <li><a href="#">Machine Learning at SJSU</a></li>
-      <li><a href="#">Management Information Systems Association</a></li>
-      <li><a href="#">Mariachi Oroazul de SJSU</a></li>
-      <li><a href="#">Marketing Association at SJSU</a></li>
-      <li><a href="#">Master of Public Health Student Association</a></li>
-      <li><a href="#">Material Advantage</a></li>
-      <li><a href="#">Men's Club Soccer</a></li>
-      <li><a href="#">Men's Club Water Polo</a></li>
-      <li><a href="#">Men's Lacrosse at SJSU</a></li>
-      <li><a href="#">Men's Rugby Club</a></li>
-      <li><a href="#">Men's Ultimate</a></li>
-      <li><a href="#">MFA Li ftoff Show</a></li>
-      <li><a href="#">Military Student's Association</a></li>
-      <li><a href="#">Mini-Baja</a></li>
-      <li><a href="#">Miniature Club</a></li>
-      <li><a href="#">Mock Trial Team at SJSU</a></li>
-      <li><a href="#">Model UN SJSU</a></li>
-      <li><a href="#">Moss Landing Marine Laboratories Student Body</a></li>
-      <li><a href="#">MPH Online</a></li>
-      <li><a href="#">Mu Phi Epsilon</a></li>
-      <li><a href="#">MUA SJSU</a></li>
-      <li><a href="#">Muslim Student Association</a></li>
-      <li><a href="#">NAfME Collegiate at SJSU</a></li>
-      <li><a href="#">National Pan Hellenic Council</a></li>
-      <li><a href="#">National Residence Hall Honorary</a></li>
-      <li><a href="#">National Student Speech-Language Hearing Association</a></li>
-      <li><a href="#">NEO Design</a></li>
-      <li><a href="#">Network for Environment and Energy Development</a></li>
-      <li><a href="#">New Heights</a></li>
-      <li><a href="#">Newman Catholic Student Association</a></li>
-      <li><a href="#">Nigerian Students Association</a></li>
-      <li><a href="#">Nu Alpha Kappa</a></li>
-      <li><a href="#">Nutrition and Food Science Club</a></li>
-      <li><a href="#">Olympic and Powerlifting Team</a></li>
-      <li><a href="#">Omega Psi Phi</a></li>
-      <li><a href="#">Order of Omega</a></li>
-      <li><a href="#">Original Wizarding League of Spartans</a></li>
-      <li><a href="#">Pakistani Student Association</a></li>
-      <li><a href="#">Panhellenic Council</a></li>
-      <li><a href="#">Peer Health Education</a></li>
-      <li><a href="#">Percussion Club at SJSU</a></li>
-      <li><a href="#">Phi Beta Sigma Fraternity</a></li>
-      <li><a href="#">Philosophy Club</a></li>
-      <li><a href="#">Photography Guild</a></li>
-      <li><a href="#">Physics and Astronomy Club</a></li>
-      <li><a href="#">Pi Alpha Phi</a></li>
-      <li><a href="#">Pi Kappa Phi: Iota Sigma</a></li>
-      <li><a href="#">Pi Sigma Alpha</a></li>
-      <li><a href="#">Pi Tau Sigma</a></li>
-      <li><a href="#">Pi Theta Epsilon</a></li>
-      <li><a href="#">Pilipino Commencement</a></li>
-      <li><a href="#">Pitch, Please!</a></li>
-      <li><a href="#">Poets & Writers Coalition at SJSU</a></li>
-      <li><a href="#">Pokémon Club at SJSU</a></li>
-      <li><a href="#">Pre-Dental Society</a></li>
-      <li><a href="#">Pre-Law Justice Association</a></li>
-      <li><a href="#">Pre-Medical Psychology Club</a></li>
-      <li><a href="#">Pre-Occupational Therapy Club</a></li>
-      <li><a href="#">Pre-Pharmacy Club</a></li>
-      <li><a href="#">Pre-Physical Therapy Club</a></li>
-      <li><a href="#">Pre-Physician Assistant Society</a></li>
-      <li><a href="#">Pre-Veterinary Club</a></li>
-      <li><a href="#">Precision Drill Unit</a></li>
-      <li><a href="#">Precision Flight Team</a></li>
-      <li><a href="#">Pride of the Pacific Islands</a></li>
-      <li><a href="#">Project SHINE</a></li>
-      <li><a href="#">PRSSA</a></li>
-      <li><a href="#">Psi Chi</a></li>
-      <li><a href="#">Public Health Nursing Club</a></li>
-      <li><a href="#">Public Health Peer Advising</a></li>
-      <li><a href="#">Queer & Asian SJSU</a></li>
-      <li><a href="#">Racquetball Club</a></li>
-      <li><a href="#">Real Options Campus Pregnancy Support Team</a></li>
-      <li><a href="#">Recreation Therapy Association at SJSU</a></li>
-      <li><a href="#">Reed Magazine</a></li>
-      <li><a href="#">Reformed University Fellowship</a></li>
-      <li><a href="#">Residence Hall Association</a></li>
-      <li><a href="#">Residence Hall Association - Campus Village 2 Hall Government</a></li>
-      <li><a href="#">Residence Life Association</a></li>
-      <li><a href="#">Resource Conservation</a></li>
-      <li><a href="#">Revival</a></li>
-      <li><a href="#">Rocket Club</a></li>
-      <li><a href="#">SAE International</a></li>
-      <li><a href="#">SAHAARA</a></li>
-      <li><a href="#">Salesforce Student User Group at SJSU</a></li>
-      <li><a href="#">Saltworks College Ministries</a></li>
-      <li><a href="#">San Jose Dragon Boat</a></li>
-      <li><a href="#">SJSU Karate Club</a></li>
-      <li><a href="#">SJSU Men’s Club Basketball</a></li>
-      <li><a href="#">SJSU Chapter of the Society of Asian Scientists and Engineers</a></li>
-      <li><a href="#">SJSU Events</a></li>
-      <li><a href="#">SJSU Men's Club Volleyball</a></li>
-      <li><a href="#">Science Extravaganza</a></li>
-      <li><a href="#">Science Technology Aspiring Students at SJSU</a></li>
-      <li><a href="#">Semillas de Centro America</a></li>
-      <li><a href="#">She's the First</a></li>
-      <li><a href="#">Shrunkenheadman Club</a></li>
-      <li><a href="#">Sigma Alpha Epsilon Fraternity</a></li>
-      <li><a href="#">Sigma Alpha Zeta</a></li>
-      <li><a href="#">Sigma Chi Epsilon Theta</a></li>
-      <li><a href="#">Sigma Lambda Beta International Fraternity</a></li>
-      <li><a href="#">Sigma Nu</a></li>
-      <li><a href="#">Sigma Pi Alpha Sorority</a></li>
-      <li><a href="#">Sigma Theta Psi</a></li>
-      <li><a href="#">Sikh Student Association</a></li>
-      <li><a href="#">Silicon Valley Engineers</a></li>
-      <li><a href="#">SJ Hacks</a></li>
-      <li><a href="#">SJSU Club Archery</a></li>
-      <li><a href="#">SJSU Club Boxing</a></li>
-      <li><a href="#">SJSU Club Tennis</a></li>
-      <li><a href="#">SJSU Concrete Canoe</a></li>
-      <li><a href="#">SJSU Dancesport Team</a></li>
-      <li><a href="#">SJSU Design Studies Club</a></li>
-      <li><a href="#">SJSU Dirty Brushes</a></li>
-      <li><a href="#">SJSU hip hop club</a></li>
-      <li><a href="#">SJSU Pre-Nursing Club</a></li>
-      <li><a href="#">SJSU Sculptor's Guild</a></li>
-      <li><a href="#">SJSU Women’s Club Soccer team</a></li>
-      <li><a href="#">Ski and Snowboard Club</a></li>
-      <li><a href="#">Small Hands Big Hearts</a></li>
-      <li><a href="#">Society of Latino Engineers and Scientists</a></li>
-      <li><a href="#">Society of Plastics Engineers</a></li>
-      <li><a href="#">Society of Women Engineers</a></li>
-      <li><a href="#">Soka Lions</a></li>
-      <li><a href="#">SOON Movement</a></li>
-      <li><a href="#">South Bay Assembly of Nursing</a></li>
-      <li><a href="#">Spartan Advertising Club</a></li>
-      <li><a href="#">Spartan Analytics</a></li>
-      <li><a href="#">Spartan Anglers Club</a></li>
-      <li><a href="#">Spartan Athletic Training</a></li>
-      <li><a href="#">Spartan Club Baseball</a></li>
-      <li><a href="#">Spartan Cross Country and Track Club</a></li>
-      <li><a href="#">Spartan Fencing</a></li>
-      <li><a href="#">Spartan Fitness Club</a></li>
-      <li><a href="#">Spartan Hyperloop</a></li>
-      <li><a href="#">Spartan M.D.</a></li>
-      <li><a href="#">Spartan Mambo</a></li>
-      <li><a href="#">Spartan Organization for Astronautical Research</a></li>
-      <li><a href="#">Spartan Quidditch</a></li>
-      <li><a href="#">Spartan Racing</a></li>
-      <li><a href="#">Spartan Racing Electric</a></li>
-      <li><a href="#">Spartan Roller Hockey</a></li>
-      <li><a href="#">Spartan Sabor</a></li>
-      <li><a href="#">Spartan Starleague</a></li>
-      <li><a href="#">Spartan Stellas</a></li>
-      <li><a href="#">Spartan Swing Dance Club</a></li>
-      <li><a href="#">Spartan Table Tennis Club</a></li>
-      <li><a href="#">Spartan Taekwondo</a></li>
-      <li><a href="#">Spartan Veg Club</a></li>
-      <li><a href="#">Spartan Wrestling</a></li>
-      <li><a href="#">Spartan Wushu</a></li>
-      <li><a href="#">Spartans for Life</a></li>
-      <li><a href="#">Spartans for Sustainability</a></li>
-      <li><a href="#">Spartans Toastmasters</a></li>
-      <li><a href="#">Sport Management Student Association</a></li>
-      <li><a href="#">Startup Grind SJSU</a></li>
-      <li><a href="#">Steel Bridge Team</a></li>
-      <li><a href="#">STEM NOW</a></li>
-      <li><a href="#">Student Advocate for Higher Education</a></li>
-      <li><a href="#">Student Alumni Connection</a></li>
-      <li><a href="#">Student Associates of the American Chemical Society at SJSU</a></li>
-      <li><a href="#">Student Homeless Alliance</a></li>
-      <li><a href="#">Student Occupational Therapy Association</a></li>
-      <li><a href="#">Student Packing Association</a></li>
-      <li><a href="#">Students Against Mass Incarceration</a></li>
-      <li><a href="#">Students for Firearms Safety</a></li>
-      <li><a href="#">Students for Justice in Palestine</a></li>
-      <li><a href="#">Students for the Exploration and Development of Space</a></li>
-      <li><a href="#">Students Supporting Israel</a></li>
-      <li><a href="#">Super Smash Bros at SJSU</a></li>
-      <li><a href="#">SWGSA</a></li>
-      <li><a href="#">Table Top Gaming Club</a></li>
-      <li><a href="#">Tahelka</a></li>
-      <li><a href="#">Taiwanese Student Association</a></li>
-      <li><a href="#">Tau Beta Pi Engineering Honor Society</a></li>
-      <li><a href="#">The American Institute of Aeronautics and Astronautics</a></li>
-      <li><a href="#">The Anti-Trafficking Coalition at SJSU</a></li>
-      <li><a href="#">The Banking and Investment Association</a></li>
-      <li><a href="#">The Black Alliance of Scientists and Engineers</a></li>
-      <li><a href="#">The Canterbury Bridge</a></li>
-      <li><a href="#">The Creative Alliance Organization</a></li>
-      <li><a href="#">The Health Initiative</a></li>
-      <li><a href="#">SJSU MPA Student Association</a></li>
-      <li><a href="#">The Native American Student Organization at SJSU</a></li>
-      <li><a href="#">The Pre-Optometric Association</a></li>
-      <li><a href="#">The SJSU Pre-Law Society</a></li>
-      <li><a href="#">The Society for Human Resource Management at SJSU </a></li>
-      <li><a href="#">The Spartan Self Defense Club of SJSU</a></li>
-      <li><a href="#">The Spartones</a></li>
-      <li><a href="#">The User Experience Association</a></li>
-      <li><a href="#">The Valley Foundation school of nursing, class of Spring 2020</a></li>
-      <li><a href="#">The Valley Foundation school of nursing, class of Spring 2021</a></li>
-      <li><a href="#">The Valley Foundation school of nursing, class of Fall 2018</a></li>
-      <li><a href="#">The Valley Foundation school of nursing, class of Spring 2019</a></li>
-      <li><a href="#">The Valley Foundation school of nursing, class of Spring 2022</a></li>
-      <li><a href="#">The Valley Foundation school of nursing, class of Fall 2020</a></li>
-      <li><a href="#">The Valley Foundation school of nursing, class of Fall 2019</a></li>
-      <li><a href="#">Theta Chi fraternity</a></li>
-      <li><a href="#">TRANSITion SJSU</a></li>
-      <li><a href="#">Transportation Development</a></li>
-      <li><a href="#">Turkish Student Association</a></li>
-      <li><a href="#">TVFSON Class of Fall 2021</a></li>
-      <li><a href="#">TYPO</a></li>
-      <li><a href="#">Tzu chi collegiate association</a></li>
-      <li><a href="#">Undergraduate social work association</a></li>
-      <li><a href="#">United Malaysians Association</a></li>
-      <li><a href="#">United Sorority and Fraternity council</a></li>
-      <li><a href="#">Unity in the community</a></li>
-      <li><a href="#">V-Day at SJSU</a></li>
-      <li><a href="#">Vamos a Oaxaca - intercambio</a></li>
-      <li><a href="#">Veterans Student Organization</a></li>
-      <li><a href="#">Vietnamese Student Association</a></li>
-      <li><a href="#">Women in Animation Student Chapter at SJSU</a></li>
-      <li><a href="#">Women in Aviation SJSU</a></li>
-      <li><a href="#">Women in Business</a></li>
-      <li><a href="#">Women in Design</a></li>
-      <li><a href="#">Women Wellness</a></li>
-      <li><a href="#">Women’s Club Basketball</a></li>
-      <li><a href="#">Women’s Club Lacrosse</a></li>
-      <li><a href="#">Women’s Club Volleyball </a></li>
-      <li><a href="#">Women’s Rugby Club</a></li>
-      <li><a href="#">Women’s Water Polo</a></li>
-      <li><a href="#">Yoga Club</a></li>
-      <li><a href="#">Young Americans for Liberty at SJSU</a></li>
-      <li><a href="#">Young Life</a></li>
-      <li><a href="#">Zeta Chi Epsilon</a></li>
-      <li><a href="#">Zeta PhiBeta Sorority</a></li>
-    </ul>
+    <div style="overflow-y: scroll; max-height: 500px; max-width: 75%; margin: 50px auto;">
+      <ul id="clubList" class="list-group">
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">3D Printing Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">A D.O.S.E of Kindness</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Abstraction</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">ACM SIGGRAPH Student Chapter at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Active Minds at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Acts2 Christian Fellowship at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Advanced Space Exploration</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Advancement Institute for Management</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Aero Meets Astro</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Affordable Engineering Design and Development</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">African American Commencement Committee</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">AICHE</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">AIESEC</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">AkbayanSJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alabaster House of Prayer</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">All Comedy SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">ALMAS</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Epsilon Pi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Eta Rho</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Kappa Delta Phi Sorority</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Kappa Omega</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Kappa Omicron</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Kappa Psi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Omicron Pi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Phi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Phi Omega</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Phi Sigma</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Sigma Phi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Tau Delta</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Tau Omega Fraternity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Alpha Xi Delta</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Amateur Radio Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">American Association of University Women</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">American Concrete Institute</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">American Library Association Student Chapter</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">American Society of Civil Engineers</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">American Society of Mechanical Engineers at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Anime Club at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Anthropology Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Apartments Council</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">AR/VR Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Armenian Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Arnold Air Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Art History Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Ashurian Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Asian American Christian Fellowship</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">ASL at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Assembly of Nurse Scholars</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Atmiya Care Charity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Badminton Club at Club Sports</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Best Buddies</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Beta Alpha Psi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Beta Beta Beta Biological Honor Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Beta Theta Pi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Beta Upsilon Chapter of Alpha Omega Epsilon</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Billiard Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Biology Students Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Biomedical Engineering Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"v><a href="#">Black Campus Ministries </a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Black Honor Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Black Male Collective</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Black Student Union</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Black Women's Collective</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">BlockLegion</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">BMEidea</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Bowling Team at SJSU</a></li>
+        <li  class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Braven at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">CADRE Student Organization</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">California Nursing Students' Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Campuses Organized and United for Good Health at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Career Development Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Center Stage Productions</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">ChAD Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Chi Epsilon Chapter 79</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Chicano Commencement</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Chinese Campus Fellowship</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Chinese Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">CHIPISIGMA</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Choirs at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Christians on Campus</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Circle K International</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Classics Hall Government</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Club Figure Skating</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Club Softball at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Club Swimming</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">College Awareness Network</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">College Republicans at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">COMM Network Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Competitive Dance Team- Sirens of Sparta</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Computer Electronics and Networking Technology Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Computer Science Club at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Counselor Education Graduate Organization</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Cru</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Cube^3</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">CVC Hall Government</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Cyber Spartans</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Cycling Club at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Daedelus Rocket Engineering and Manufacturing</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Data Science Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Delta Sigma Phi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Delta Sigma Pi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Delta Zeta</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Design Build Fly at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Destino</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">DREAM</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Dungeons & Dragons at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Early Childhood Student-Alumni Network</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Eco Representatives</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Economics Club at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">El Espartano Noticias</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Electric Vehicle Wireless Charging Research Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Engineering Management Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Engineers Without Borders</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">English Lit & Writing Professional Development Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Environmental Resource Center</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Epic Movement</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Epsilon Pi Tau</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Esports at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Film Production Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Finance and Economics Women's Club SJSU Chapter</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Financial Management Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">First Love SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Forensic Science Students</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Fresh Pressed Print Makers' Guild</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Game Development Club at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Geology Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Girls Who Code Loop</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Global Medical Brigades</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Global Operations Management Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Global Student Network</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Google Developer Student Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Graduate Business Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Grupo Folklorico Luna y Sol</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Gymnastics Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Habesha Students Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Health Science Honor Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Her Campus SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Hindu Yuva</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">History Club/Phi Alpha Theta</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Hmong Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Hong Kong Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Hoplite</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Hospitality Financial and Technology Professionals</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Human Factors and Ergonomics Society Student Chapter</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Ice Hockey at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">IDEAS</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">IDSA Student Chapter at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">IEEE EPS-CS</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Improv Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Inclusively Recognizing Student Parents</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Indian Student Organization</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Information Systems Audit and Control Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Institute for Electrical and Electronics Engineers Student Branch at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Institute of Industrial and Systems Engineers</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Institute of Management Accountants</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Institute of Transportation Engineers</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Interfraternity Council</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Interior Design Student Organization</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">International Business Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">International Culture and Communication Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">International Youth Fellowship</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">InterVarsity Christian Fellowship</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Iota Phi Theta Fraternity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">ISPE</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Japanese Student Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Jewelry and Small Metals Guild</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">JSA Career at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Juggle at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Kappa Alpha Psi Fraternity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Kappa Delta</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Kappa Kappa Psi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Kappa Sigma Fraternity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Kendo and Naginata Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Kinesiology Ambassadors Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Korean Entertainment Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Korean Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Lambda Sigma Gamma Sorority</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Lambda Theta Alpha Latin Sorority</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Lambda Theta Phi Latin Fraternity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Latino Business Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Latter-Day Saint Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Lebanese Social Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Linguistics and Language Development Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">M.E.Ch.A de SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Machine Learning at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Management Information Systems Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Mariachi Oroazul de SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Marketing Association at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Master of Public Health Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Material Advantage</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Men's Club Soccer</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Men's Club Water Polo</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Men's Lacrosse at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Men's Rugby Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Men's Ultimate</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">MFA Li ftoff Show</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Military Student's Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Mini-Baja</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Miniature Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Mock Trial Team at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Model UN SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Moss Landing Marine Laboratories Student Body</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">MPH Online</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Mu Phi Epsilon</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">MUA SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Muslim Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">NAfME Collegiate at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">National Pan Hellenic Council</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">National Residence Hall Honorary</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">National Student Speech-Language Hearing Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">NEO Design</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Network for Environment and Energy Development</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">New Heights</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Newman Catholic Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Nigerian Students Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Nu Alpha Kappa</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Nutrition and Food Science Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Olympic and Powerlifting Team</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Omega Psi Phi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Order of Omega</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Original Wizarding League of Spartans</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pakistani Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Panhellenic Council</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Peer Health Education</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Percussion Club at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Phi Beta Sigma Fraternity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Philosophy Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Photography Guild</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Physics and Astronomy Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pi Alpha Phi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pi Kappa Phi: Iota Sigma</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pi Sigma Alpha</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pi Tau Sigma</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pi Theta Epsilon</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pilipino Commencement</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pitch, Please!</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Poets & Writers Coalition at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pokémon Club at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pre-Dental Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pre-Law Justice Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pre-Medical Psychology Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pre-Occupational Therapy Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pre-Pharmacy Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pre-Physical Therapy Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pre-Physician Assistant Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pre-Veterinary Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Precision Drill Unit</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Precision Flight Team</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Pride of the Pacific Islands</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Project SHINE</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">PRSSA</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Psi Chi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Public Health Nursing Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Public Health Peer Advising</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Queer & Asian SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Racquetball Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Real Options Campus Pregnancy Support Team</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Recreation Therapy Association at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Reed Magazine</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Reformed University Fellowship</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Residence Hall Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Residence Hall Association - Campus Village 2 Hall Government</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Residence Life Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Resource Conservation</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Revival</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Rocket Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SAE International</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SAHAARA</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Salesforce Student User Group at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Saltworks College Ministries</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">San Jose Dragon Boat</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Karate Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Men’s Club Basketball</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Chapter of the Society of Asian Scientists and Engineers</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Events</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Men's Club Volleyball</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Science Extravaganza</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Science Technology Aspiring Students at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Semillas de Centro America</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">She's the First</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Shrunkenheadman Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Sigma Alpha Epsilon Fraternity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Sigma Alpha Zeta</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Sigma Chi Epsilon Theta</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Sigma Lambda Beta International Fraternity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Sigma Nu</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Sigma Pi Alpha Sorority</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Sigma Theta Psi</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Sikh Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Silicon Valley Engineers</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJ Hacks</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Club Archery</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Club Boxing</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Club Tennis</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Concrete Canoe</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Dancesport Team</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Design Studies Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Dirty Brushes</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU hip hop club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Pre-Nursing Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Sculptor's Guild</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU Women’s Club Soccer team</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Ski and Snowboard Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Small Hands Big Hearts</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Society of Latino Engineers and Scientists</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Society of Plastics Engineers</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Society of Women Engineers</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Soka Lions</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SOON Movement</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">South Bay Assembly of Nursing</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Advertising Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Analytics</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Anglers Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Athletic Training</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Club Baseball</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Cross Country and Track Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Fencing</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Fitness Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Hyperloop</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan M.D.</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Mambo</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Organization for Astronautical Research</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Quidditch</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Racing</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Racing Electric</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Roller Hockey</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Sabor</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Starleague</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Stellas</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Swing Dance Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Table Tennis Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Taekwondo</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Veg Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Wrestling</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartan Wushu</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartans for Life</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartans for Sustainability</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Spartans Toastmasters</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Sport Management Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Startup Grind SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Steel Bridge Team</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">STEM NOW</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Student Advocate for Higher Education</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Student Alumni Connection</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Student Associates of the American Chemical Society at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Student Homeless Alliance</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Student Occupational Therapy Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Student Packing Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Students Against Mass Incarceration</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Students for Firearms Safety</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Students for Justice in Palestine</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Students for the Exploration and Development of Space</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Students Supporting Israel</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Super Smash Bros at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SWGSA</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Table Top Gaming Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Tahelka</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Taiwanese Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Tau Beta Pi Engineering Honor Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The American Institute of Aeronautics and Astronautics</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Anti-Trafficking Coalition at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Banking and Investment Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Black Alliance of Scientists and Engineers</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Canterbury Bridge</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Creative Alliance Organization</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Health Initiative</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">SJSU MPA Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Native American Student Organization at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Pre-Optometric Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The SJSU Pre-Law Society</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Society for Human Resource Management at SJSU </a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Spartan Self Defense Club of SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Spartones</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The User Experience Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Valley Foundation school of nursing, class of Spring 2020</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Valley Foundation school of nursing, class of Spring 2021</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Valley Foundation school of nursing, class of Fall 2018</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Valley Foundation school of nursing, class of Spring 2019</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Valley Foundation school of nursing, class of Spring 2022</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Valley Foundation school of nursing, class of Fall 2020</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">The Valley Foundation school of nursing, class of Fall 2019</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Theta Chi fraternity</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">TRANSITion SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Transportation Development</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Turkish Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">TVFSON Class of Fall 2021</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">TYPO</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Tzu chi collegiate association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Undergraduate social work association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">United Malaysians Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">United Sorority and Fraternity council</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Unity in the community</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">V-Day at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Vamos a Oaxaca - intercambio</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Veterans Student Organization</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Vietnamese Student Association</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women in Animation Student Chapter at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women in Aviation SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women in Business</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women in Design</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women Wellness</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women’s Club Basketball</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women’s Club Lacrosse</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women’s Club Volleyball </a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women’s Rugby Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Women’s Water Polo</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Yoga Club</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Young Americans for Liberty at SJSU</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Young Life</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Zeta Chi Epsilon</a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="#">Zeta PhiBeta Sorority</a></li>
+      </ul>
+    </div>
 
   </div>
 </body>
