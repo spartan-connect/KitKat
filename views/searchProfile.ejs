@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+
+  <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
+  <title>Profile pages</title>
+
+</head>
+
+<body>
+  <% include partials/nav.ejs %>
+  <div id="main" class="main">
+    <h1><%= data.username %>'s Profile</h1>
+    <p>Bio: <%= data.bio%></p>
+    <p>Major: <%= data.major%></p>
+    <p>Classes: <%= data.classList.join(", ")%></p>
+    <p>Clubs: <%= data.club.join(", ")%></p>
+    <p>Profile Picture: </p>
+    <%if (data.picture == null){%>
+    <img src="assets/noProfileImage.png" class="profilePic">
+    <% }else{%>
+    <img src=data.photo class="profilePic">
+    <%}%>
+  </div>
+
+
+  <div class="wrapper">
+    <button OnClick=" location.href='/' ">Back</button>
+  </div>
+</body>
+
+</html>

@@ -12,7 +12,7 @@
     <input type="text" id="studentSearchInput" placeholder="Search for A SJSU Student" onkeyup="studentSearchFunction()">
     <ul id="studentList">
       <% for (var i = 0; i < data.length; i++) { %>
-        <li><a href="#"><%= data[i] %></a></li>
+        <li><a href="/searchProfile/<%= data[i] %>"><%= data[i] %></a></li>
       <% } %>
     </ul>
   </div>
