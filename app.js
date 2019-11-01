@@ -50,7 +50,10 @@ app.get('/', function (req, res) {
 // 400 status is an operation failed
 // just example of saving to db, doesn't perform login correctly
 app.post('/profile', function (req, res) {
+  var count = Object.keys(req.body).length;
+  console.log(count);
   console.log(req.body);
+
   var data = new dbModels.StudentModel(req.body);
   data.save()
     .then(info => {
@@ -74,6 +77,7 @@ app.get('/clubDirectory', function (req, res) {
 // these are the temporary databases
 app.get('/channels', function (req, res) {
   channelData = {
+
     "users": [{
         "name": 'Bob',
         "status": 'offline'
@@ -106,6 +110,7 @@ app.get('/channels', function (req, res) {
         "name": 'TestName',
         "status": 'offline'
       }
+
     ],
     "messages": [{
         "text": 'Hi everyone!'
@@ -114,6 +119,7 @@ app.get('/channels', function (req, res) {
         "text": 'Hello everyone!'
       }
     ],
+    
     "channels": [{
         "name": 'CS160',
         "ID": 0
@@ -155,6 +161,7 @@ app.get('/messages', (req, res) => {
 
 app.get('/messages/:user', (req, res) => {
   var user = req.params.user
+
   MessageTest.find({
     name: user
   }, (err, messages) => {
@@ -169,6 +176,7 @@ app.post('/messages', async (req, res) => {
 
     var savedMessage = await message.save()
     console.log('saved');
+
 
     var censored = await MessageTest.findOne({
       message: 'badword'
