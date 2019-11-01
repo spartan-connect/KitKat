@@ -2,17 +2,27 @@
 <html>
 <head>
   <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>Search For A Student</title>
 </head>
 
 <body>
   <% include partials/nav.ejs %>
   <div class="main">
-    <h1>Search For A Student</h1>
-    <input type="text" id="studentSearchInput" placeholder="Search for A SJSU Student" onkeyup="studentSearchFunction()">
-    <ul id="studentList">
+  <div style="height: 25px;"></div>
+  <h1 style="font-size: 4em;">Search For A Student</h1>
+    <input
+    type="text"
+    id="studentSearchInput"
+    placeholder="Search for A SJSU Student"
+    class="form-control"
+    onkeyup="studentSearchFunction()"
+    style="margin: 10px auto; max-width: 75%;">
+    <div style="overflow-y: scroll; max-height: 500px; max-width: 75%; margin: 50px auto;">
+
+    <ul id="studentList" class="list-group">
       <% for (var i = 0; i < data.length; i++) { %>
-        <li><a href="/searchProfile/<%= data[i] %>"><%= data[i] %></a></li>
+        <li class="list-group-item" style="background-color: #f2f2f2;"><a href="/searchProfile/<%= data[i] %>"><%= data[i] %></a></li>
       <% } %>
     </ul>
   </div>
