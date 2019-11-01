@@ -54,6 +54,37 @@ app.post('/profile', function (req, res) {
   console.log(count);
   console.log(req.body);
 
+  // Authorize login
+  if (count == 2) {
+    dbModels.StudentModel.find(req.body, function (err, student) {
+      if (student.length == 0) {
+        console.log("Can't Find User");
+        res.render('home', {error: 'Incorrect Username/Password'});
+      }
+
+      else if (req.body.username == student[0].username && req.body.password == student[0].password) {
+        console.log(student);
+        console.log(student[0].username);
+        console.log(student[0].password);
+        console.log('Student Account was found');
+        res.render('profile', {data: student[0]});
+      }
+    });
+  }
+  // save form information into DB
+  else {
+    var data = new dbModels.StudentModel(req.body);
+    data.save()
+      .then(info => {
+        console.log("Student Info Saved to DB");
+      })
+      .catch(err => {
+        res.status(400).send("Unable to save to DB");
+      });
+    res.render('profile', { data: req.body });
+  }
+});
+
   var data = new dbModels.StudentModel(req.body);
   data.save()
     .then(info => {

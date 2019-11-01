@@ -29,6 +29,10 @@ html {
   margin-right: auto;
   width: 50%;
 }
+.profilePic {
+  display: block;
+  width: 10%;
+}
 
 h1 {
 text-align: center;
@@ -47,7 +51,9 @@ margin-left: 24px;
 
 /* for profile page */
 p {
-  text-align: center
+  color: #E5A823;
+  text-align: left
+  font-size: 16pt;
 }
 
 /* Normal white Button as seen on Google.com*/
