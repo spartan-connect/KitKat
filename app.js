@@ -73,6 +73,23 @@ app.get('/campusMap', function (req, res) {
 app.get('/clubDirectory', function (req, res) {
   res.render('clubDirectory');
 });
+app.get('/searchStudents', function (req, res) {
+  var arrayOfStudents = [];
+  dbModels.StudentModel.find(function (err, student){
+    student.forEach(function(s){
+      arrayOfStudents.push(s.username);
+    });
+    res.render('searchStudents', {data: arrayOfStudents});
+  });
+});
+app.get('/searchProfile/:name', function (req, res) {
+  var name = req.params.name;
+  dbModels.StudentModel.findOne({"username": name}, function (err, student){
+    if (err) return res.status(400).send("Database Error");
+    if (student) res.render('searchProfile', {data: student});
+    else res.status(400).send("Student not found");
+  });
+});
 
 // these are the temporary databases
 app.get('/channels', function (req, res) {
