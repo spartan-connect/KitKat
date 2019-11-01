@@ -164,6 +164,28 @@ ul.sidenav li a:hover:not(.active) {
   background-color: #939597;
 }
 
+#studentSearchInput{
+  width: 90%;
+  font-size: 36px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+#studentList{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#studentList li a{
+  display: block;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+#studentList li a:hover:not(.header) {
+  background-color: #939597;
+}
+
 #newUser a{
   color: black;
 }

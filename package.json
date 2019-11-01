@@ -4,11 +4,15 @@
   "description": "A social media app just for Spartans!",
   "main": "app.js",
   "dependencies": {
+    "alert-node": "^2.0.1",
     "body-parser": "^1.19.0",
+    "cookie-session": "^1.3.3",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {},
