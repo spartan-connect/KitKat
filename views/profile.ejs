@@ -3,31 +3,34 @@
 
 <head>
   <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
   <title>Profile pages</title>
 
 </head>
 
 <body>
-  <% include partials/nav.ejs %>
-  <div id="main" class="main">
-    <h1>Welcome to your profile, <%= data.username %> ! </h1>
-    <p>Bio: <%= data.bio%></p>
-    <p>Major: <%= data.major%></p>
-    <p>Classes: <%= data.classList.join(", ")%></p>
-    <p>Clubs: <%= data.club.join(", ")%></p>
-    <p>Profile Picture: </p>
-    <%if (data.picture == null){%>
-    <img src="assets/noProfileImage.png" class="profilePic">
-    <% }else{%>
-    <img src=data.photo class="profilePic">
-    <%}%>
-  </div>
-
-
   <div class="wrapper">
-    <button OnClick=" location.href='/' ">Back</button>
+    <% include partials/nav.ejs %>
+    <div id="main" class="main">
+      <div style="height: 25px;"></div>
+      <button 
+        class="btn btn-primary" 
+        OnClick=" location.href='/' " 
+        style="background-color: #E5A823; border: none;">
+      Back</button>
+      <h1 style="color: black;">Welcome to your profile, <%= data.username %> ! </h1>
+       <p>Bio: <%= data.bio%></p>
+      <p>Major: <%= data.major%></p>
+      <p>Classes: <%= data.classList.join(", ")%></p>
+      <p>Clubs: <%= data.club.join(", ")%></p>
+      <p>Profile Picture: </p>
+      <%if (data.picture == null){%>
+      <img src="assets/noProfileImage.png" class="profilePic">
+      <% }else{%>
+      <img src=data.photo class="profilePic">
+      <%}%>
+    </div>
   </div>
 </body>
 
