@@ -190,6 +190,7 @@
 			<br>
 			<textarea id = "message" placeholder="Type message"></textarea>
 			<button id="send">Send</button>
+			<div class="filebutton">Send Image<input type="file" id="imagefile" accept="image/*"></div>
 		</div>
 	  
 	</div>
@@ -204,6 +205,7 @@
 			getMessages()
 		})
 		socket.on('message', addMessages)
+		socket.on('user image', image);
 		
 		function addMessages(message){
 			$("#channels_msg_list").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
@@ -223,7 +225,22 @@
 		function clearTextField() {
 			document.getElementById("message").value = "";
 		}
-		
+
+		function image (from, base64Image) {
+    		$('#channels_msg_list').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
+		}
+		  
+		$(function () {
+    		$('#imagefile').bind('change', function(e){
+      			var data = e.originalEvent.target.files[0];
+      			var reader = new FileReader();
+      			reader.onload = function(evt){
+        			image('me', evt.target.result);
+        			socket.emit('user image', evt.target.result);
+      			};
+			  	reader.readAsDataURL(data);
+    		});
+  		});
 	</script>
   
   </body>
