@@ -44,12 +44,7 @@ function renderCalendar(month, year) {
 
 function previous() {
     if (currentMonth === 0) {
-        currentYear = currentYear;
-    } else {
         currentYear--;
-    }
-
-    if (currentMonth === 0) {
         currentMonth = 11;
     } else {
         currentMonth--;
@@ -61,7 +56,6 @@ function next() {
     if (currentMonth === 11) {
         currentYear++;
     }
-
     currentMonth = (currentMonth + 1) % 12;
     renderCalendar(currentMonth, currentYear);
 }
