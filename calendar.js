@@ -10,13 +10,9 @@ let calendarHeader = document.getElementById('calendar-header');
 function renderCalendar(month, year) {
     let firstDay = new Date(year, month).getDay();
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
-
     let tbl = document.getElementById("calendar-cells");
-
     tbl.innerHTML = "";
-
     calendarHeader.innerHTML = months[month] + " " + year;
-
     let date = 1;
 
     for (let i = 0; i < 6; i++) {
