@@ -23,20 +23,20 @@ function renderCalendar(month, year) {
         let row = document.createElement('tr');
 
         for (let j = 0; j < 7; j++) {
-            let cell = document.createElement("td");
             if (i === 0 && j < firstDay) {
+                let cell = document.createElement("td");
                 let cellText = document.createTextNode("");
                 cell.appendChild(cellText);
                 row.appendChild(cell);
             } else if (date > daysInMonth) {
                 break;
             } else {
+                let cell = document.createElement("td");
                 let cellText = document.createTextNode(date);
                 cell.appendChild(cellText);
                 row.appendChild(cell);
+                date++;
             }
-
-            date++;
         }
         tbl.appendChild(row);
     }
