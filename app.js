@@ -93,6 +93,11 @@ app.get('/campusMap', function(req, res) {
 app.get('/clubDirectory', function(req, res) {
   res.render('clubDirectory');
 });
+
+app.get('/eventsCalendar', function(req, res) {
+  res.render('calendar');
+});
+
 app.get('/searchStudents', function(req, res) {
   var arrayOfStudents = [];
   dbModels.StudentModel.find(function(err, student) {
