@@ -84,16 +84,16 @@ app.get('/clubDirectory', function (req, res) {
 });
 app.get('/searchStudents', function (req, res) {
   var arrayOfStudents = [];
-  dbModels.StudentModel.find(function (err, student) {
-    student.forEach(function (s) {
-      arrayOfStudents.push(s.username);
+  dbModels.UserModel.find(function (err, user) {
+    user.forEach(function (u) {
+      arrayOfStudents.push(u.name);
     });
     res.render('searchStudents', { data: arrayOfStudents });
   });
 });
 app.get('/searchProfile/:name', function (req, res) {
   var name = req.params.name;
-  dbModels.StudentModel.findOne({ username: name }, function (err, student) {
+  dbModels.UserModel.findOne({ name: name }, function (err, student) {
     if (err) return res.status(400).send('Database Error');
     if (student) res.render('searchProfile', { data: student });
     else res.status(400).send('Student not found');
