@@ -9,6 +9,13 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   	<script src="/socket.io/socket.io.js"></script>
 	<style>
+
+		/* "main" css for channels page */
+		.mainChannel {
+		  margin-left: 200px;
+		  padding: 0px 10px;
+		}
+
 		#channelSection {
 		width: 100%;
 		height: 80%;
@@ -153,19 +160,41 @@
 	</style>
   </head>
 
-  <body>
+  <body onload="setup()">
     <% include partials/nav.ejs %>
-    <div class="main">
-	<div style="height: 25px;"></div>
-	<% var channelName = "ChannelName" %>
-      <h2 style="color:#E5A823"><%= channelName %></h2>
+    <div class="mainChannel">
+      <p style="color:#E5A823; font-size: 20px;"><span id="channelTitle"></span></p>
+	  <script>
+	  // returns desired value of the cookie with the name cookieName (the text before the "=")
+	  function getCookie(cookieName) {
+			var name = cookieName + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var cookieArray = decodedCookie.split(';');
+			for (var i = 0; i < cookieArray.length; i++) {
+				var c = cookieArray[i];
+				while (c.charAt(0) == ' ') { // keep moving until non-space is reached
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+		
+		// WIP; comment below describes what should be done here
+		// Updates the channel title display, so that it displays the currently selected channel.
+		// Uses the cookie data to determine which channel is currently selected/being viewed.
+		var c = document.cookie;
+		document.getElementById("channelTitle").innerHTML = c;
+	  </script>
 	  
 	  <section id = "channelSection">
 		<div id="myChannels">
 			Your channels
 			<% channels.forEach(function(channel) { %>
-				<% var channelId = channel.id; %>
-				<br><br><a id="channelLink" href=""+channelId><%= channel.name %></a>
+				<% var channelId = channel.ID; %>
+				<br><br><a id="channelLink" title="Test" href = "" onclick="openChannel('<%= channelId %>')"><%= channel.name %></a>
 			<% })%>
 		</div>
 		<div id = "onlineList">
@@ -190,23 +219,59 @@
 			<br>
 			<textarea id = "message" placeholder="Type message"></textarea>
 			<button id="send">Send</button>
+			<div class="filebutton">Send Image<input type="file" id="imagefile" accept="image/*"></div>
 		</div>
 	  
 	</div>
 	
-
 	<script>
+		// This area contains functions dealing with posting messages, and displaying the messages on the channel page.
 		var socket = io();
 		$(() => {
 			$("#send").click(()=>{
-				sendMessage({name: "TempName", message: $("#message").val()});
+				var myDate = new Date();
+				sendMessage({name: "TempName" /*data.username*/, timestamp: myDate.toLocaleTimeString() + ", " + myDate.toLocaleDateString(), message: $("#message").val(), currentChannelId: getCookie("viewedChannelId")});
 			})
-			getMessages()
+			getMessages();
 		})
 		socket.on('message', addMessages)
+		socket.on('user image', image);
+		
+		// called when first loading the page. Create a cookie to store information like id of channel currently being viewed
+		function setup() {
+			var myCookie = getCookie("viewedChannelId");
+			if (myCookie == "") // if cookie doesn't exist
+				document.cookie = "viewedChannelId=0"; // instead of 0, should be the id of the first channel on the user's own list of channels that they joined
+		}
+		
+		// Note: I commented this part out because it was already declared in a <script> above, inside the html section
+		// returns desired value of the cookie with the name cookieName (the text before the "=")
+		/*function getCookie(cookieName) {
+			var name = cookieName + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var cookieArray = decodedCookie.split(';');
+			for (var i = 0; i < cookieArray.length; i++) {
+				var c = cookieArray[i];
+				while (c.charAt(0) == ' ') { // keep moving until non-space is reached
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}*/
+		
+		// sets a variable value, which causes only messages belonging to the selected channel to be displayed
+		function openChannel(channelId) {
+			document.cookie = "viewedChannelId=" + channelId; // overwrite cookie value
+		}
 		
 		function addMessages(message){
-			$("#channels_msg_list").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
+			if (message.currentChannelId == getCookie("viewedChannelId"))
+			{
+				$("#channels_msg_list").append(`<h6> ${message.name} <span style="font-size: 8px">${message.timestamp} ${message.currentChannelId} </span></h6><p style="text-align: left"> &nbsp&nbsp&nbsp&nbsp ${message.message} </p>`)
+			}
 			clearTextField();
 		}
 		
@@ -223,6 +288,22 @@
 		function clearTextField() {
 			document.getElementById("message").value = "";
 		}
+		
+		function image (from, base64Image) {
+    		$('#channels_msg_list').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
+		}
+		  
+		$(function () {
+    		$('#imagefile').bind('change', function(e){
+      			var data = e.originalEvent.target.files[0];
+      			var reader = new FileReader();
+      			reader.onload = function(evt){
+        			image('me', evt.target.result);
+        			socket.emit('user image', evt.target.result);
+      			};
+			  	reader.readAsDataURL(data);
+    		});
+  		});
 		
 	</script>
   
