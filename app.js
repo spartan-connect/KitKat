@@ -110,83 +110,40 @@ app.get('/searchProfile/:name', function(req, res) {
     else res.status(400).send('Student not found');
   });
 });
-
 // these are the temporary databases
-app.get('/channels', function(req, res) {
+app.get('/channels', function (req, res) {
   channelData = {
-    users: [
-      {
-        name: 'Bob',
-        status: 'offline'
-      },
-      {
-        name: 'Bob2',
-        status: 'online'
-      },
-      {
-        name: 'Bob3',
-        status: 'online'
-      },
-      {
-        name: 'John',
-        status: 'offline'
-      },
-      {
-        name: 'Apple',
-        status: 'offline'
-      },
-      {
-        name: 'Seed',
-        status: 'offline'
-      },
-      {
-        name: 'Johnny',
-        status: 'online'
-      },
-      {
-        name: 'TestName',
-        status: 'offline'
-      }
+    "users": [
+      { "name": 'Bob', "status": 'offline' },
+      { "name": 'Bob2', "status": 'online' },
+      { "name": 'Bob3', "status": 'online' },
+      { "name": 'John', "status": 'offline' },
+      { "name": 'Apple', "status": 'offline' },
+      { "name": 'Seed', "status": 'offline' },
+      { "name": 'Johnny', "status": 'online' },
+      { "name": 'TestName', "status": 'offline' }
     ],
-    messages: [
-      {
-        text: 'Hi everyone!'
-      },
-      {
-        text: 'Hello everyone!'
-      }
+    "messages": [
+      { "text": 'Hi everyone!', "msgId": 0},
+      { "text": 'Hello everyone!', "msgId": 1 }
     ],
-
-    channels: [
-      {
-        name: 'CS160',
-        ID: 0
-      },
-      {
-        name: 'Fun Channel',
-        ID: 1
-      },
-      {
-        name: 'Lost and Found',
-        ID: 2
-      },
-      {
-        name: 'Marketplace!',
-        ID: 3
-      },
-      {
-        name: 'AveryLongChannelNameAaaaaaaa',
-        ID: 4
-      }
+    "channels": [
+      { "name": 'CS160', "ID": 0 },
+      { "name": 'Fun Channel', "ID": 1 },
+      { "name": 'Lost and Found', "ID": 2 },
+      { "name": 'Marketplace!', "ID": 3 },
+      { "name": 'AveryLongChannelNameAaaaaaaa', "ID": 4 }
     ]
-  };
+  }
 
   res.render('channels', channelData);
 });
 
 var MessageTest = mongoose.model('MessageTest', {
   name: String,
-  message: String
+  timestamp: String,
+  message: String,
+  currentChannelId: String
 });
 
 app.get('/messages', (req, res) => {
