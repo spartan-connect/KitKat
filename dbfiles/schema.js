@@ -15,11 +15,21 @@ var {
 //Schema's
 // Making user schema for google OAuth
 var UserSchema = new Schema({
-    googleId: String
+    googleId: String,
+    name: String,
+    firstName: String,
+    lastName: String,
+    pictureLink: String,
+    email: String,
+    bio: String,
+    classList: Array,
+    club: String,
+    major: String,
+    //Messages: Array
 });
 
 var User = mongoose.model('User', UserSchema);
-
+/*
 var StudentSchema = new Schema({
     username: String,
     email: String,
@@ -34,7 +44,7 @@ var StudentSchema = new Schema({
     calender: String,
     major: String,
     Messages: Array
-});
+});*/
 
 var MessageSchema = new Schema({
     sender: String,
@@ -65,7 +75,7 @@ var CampusPDSchema = new Schema({
 var Message = mongoose.model('Message', MessageSchema);
 var CampusPD = mongoose.model('CampusPD', CampusPDSchema);
 var Faculty = mongoose.model('Faculty', FacultySchema);
-var Student = mongoose.model('Student', StudentSchema);
+//var Student = mongoose.model('Student', StudentSchema);
 
 var CalenderSchema = new Schema({
     calenderEvents: {
@@ -159,7 +169,7 @@ module.exports = {
     GroupChatModel: GroupChat,
     CampusPDModel: CampusPD,
     FacultyModel: Faculty,
-    StudentModel: Student,
+    //StudentModel: Student,
     mongoose: mongoose,
     CalenderModel: Calender,
     CalenderEventModel: CalenderEvent,

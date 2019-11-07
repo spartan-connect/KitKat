@@ -13,14 +13,15 @@
 
     <div class="newUser-form">
         <h1>Create a New Account</h1>
-        <form method="POST" action="/profile">
-            <input type="text" name="username" placeholder="Username" required pattern="[A-Za-z]"
-                title="No Special Characters" />
-            <input type="email" name="email" placeholder="Email Address" required />
-            <input type="text" name="password" placeholder="Password" required>
-            <input type="text" name="bio" placeholder="Bio" required pattern="[A-Za-z]" title="No Special Characters">
-            <input type="text" name="major" placeholder="Major" required pattern="[A-Za-z]"
+        <form method="POST" action="/dbNewUserSave">
+            <!--input type="text" name="username" placeholder="Username" required pattern="[A-Za-z]"
+                title="No Special Characters" /-->
+            <!--input type="email" name="email" placeholder="Email Address" required /-->
+            <!--input type="text" name="password" placeholder="Password" required-->
+            <input type="text" name="bio" placeholder="Bio" required pattern="[A-Za-z]+" title="No Special Characters">
+            <input type="text" name="major" placeholder="Major" required pattern="[A-Za-z]+"
                 title="No Special Characters">
+            <input type="text" name="Club" placeholder="club" pattern="[A-Za-z]+" title="No Special Characters">
             <input type="submit" value="Submit" />
         </form>
     </div>

@@ -38,7 +38,7 @@ var urlencodedParser = bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.render('home');
 });
 
@@ -49,62 +49,51 @@ app.get('/', function(req, res) {
 
 // 400 status is an operation failed
 // just example of saving to db, doesn't perform login correctly
-app.post('/profile', function(req, res) {
-  var count = Object.keys(req.body).length;
-  console.log(count);
+app.get('/profile', function (req, res) {
   console.log(req.body);
 
   // Authorize login
-  if (count == 2) {
-    dbModels.StudentModel.find(req.body, function(err, student) {
-      if (student.length == 0) {
-        console.log("Can't Find User");
-        res.render('home', { error: 'Incorrect Username/Password' });
-      } else if (
-        req.body.username == student[0].username &&
-        req.body.password == student[0].password
-      ) {
-        console.log(student);
-        console.log(student[0].username);
-        console.log(student[0].password);
-        console.log('Student Account was found');
-        res.render('profile', { data: student[0] });
-      }
-    });
+  if (req.user.major == "") {
+    res.render('newUserForm')
   }
   // save form information into DB
   else {
-    var data = new dbModels.StudentModel(req.body);
-    data
-      .save()
-      .then(info => {
-        console.log('Student Info Saved to DB');
-      })
-      .catch(err => {
-        res.status(400).send('Unable to save to DB');
-      });
-    res.render('profile', { data: req.body });
+    res.render('profile', { data: req.user });
   }
 });
 
-app.get('/campusMap', function(req, res) {
+app.post('/dbNewUserSave', function (req, res) {
+  console.log(req.body);
+  console.log(req.user);
+  let update = {
+    $set: {
+      bio: req.body.bio,
+      major: req.body.major,
+      club: req.body.club
+    }
+  }
+  dbModels.UserModel.findOneAndUpdate({ _id: req.user._id }, update, function (err, user) { if (err) { throw err; } else { console.log(user); } });
+  res.redirect('/profile');
+});
+
+app.get('/campusMap', function (req, res) {
   res.render('campusMap');
 });
-app.get('/clubDirectory', function(req, res) {
+app.get('/clubDirectory', function (req, res) {
   res.render('clubDirectory');
 });
-app.get('/searchStudents', function(req, res) {
+app.get('/searchStudents', function (req, res) {
   var arrayOfStudents = [];
-  dbModels.StudentModel.find(function(err, student) {
-    student.forEach(function(s) {
+  dbModels.StudentModel.find(function (err, student) {
+    student.forEach(function (s) {
       arrayOfStudents.push(s.username);
     });
     res.render('searchStudents', { data: arrayOfStudents });
   });
 });
-app.get('/searchProfile/:name', function(req, res) {
+app.get('/searchProfile/:name', function (req, res) {
   var name = req.params.name;
-  dbModels.StudentModel.findOne({ username: name }, function(err, student) {
+  dbModels.StudentModel.findOne({ username: name }, function (err, student) {
     if (err) return res.status(400).send('Database Error');
     if (student) res.render('searchProfile', { data: student });
     else res.status(400).send('Student not found');
@@ -112,7 +101,7 @@ app.get('/searchProfile/:name', function(req, res) {
 });
 
 // these are the temporary databases
-app.get('/channels', function(req, res) {
+app.get('/channels', function (req, res) {
   channelData = {
     users: [
       {

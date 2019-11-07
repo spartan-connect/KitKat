@@ -7,17 +7,16 @@ module.exports = app => {
     }));
 
     app.get('/auth/google/callback', passport.authenticate('google', {
-            scope: ['profile', 'email']
-        }),
+        scope: ['profile', 'email']
+    }),
         (req, res) => {
             if (req.user.googleId) {
-                console.log(req.session);
-                res.redirect('/');
+                console.log(req.user);
+                res.redirect('/profile');
             } else {
-                console.log('yo');
-                console.log(req.session);
+                console.log(req.user);
                 res.redirect('/');
-                alert('Please enter sjsu id');
+                alert('Please continue with SJSU');
             }
 
         }
