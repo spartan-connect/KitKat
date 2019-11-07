@@ -8,6 +8,7 @@ var cookieSession = require('cookie-session');
 
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+// var calendarScripts = require('./calendarScripts.js');
 
 app.use(
   cookieSession({
