@@ -3,7 +3,7 @@
 
 <head>
   <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
   <title>Profile pages</title>
 
@@ -19,7 +19,7 @@
     <p>Clubs: <%= data.club.join(", ")%></p>
     <p>Profile Picture: </p>
     <%if (data.picture == null){%>
-    <img src="assets/noProfileImage.png" class="profilePic">
+    <img src="/assets/noProfileImage.png" class="profilePic">
     <% }else{%>
     <img src=data.photo class="profilePic">
     <%}%>
