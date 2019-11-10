@@ -99,6 +99,11 @@ app.get('/eventsCalendar', function(req, res) {
   res.render('calendar');
 });
 
+app.post('/eventsCalendar', function(req, res) {
+  // res.render('calendar');
+  console.log(req.body.month, req.body.day, req.body.year);
+});
+
 app.get('/searchStudents', function(req, res) {
   var arrayOfStudents = [];
   dbModels.StudentModel.find(function(err, student) {

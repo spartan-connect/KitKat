@@ -42,8 +42,8 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        
         let today = new Date();
         let currentMonth = today.getMonth();
         let currentYear = today.getFullYear();
@@ -73,10 +73,28 @@
                         break;
                     } else {
                         let cell = document.createElement("td");
+                        let monthId = month + 1;
+                        cell.id = monthId + "_" + date + "_" + year;
                         let cellText = document.createTextNode(date);
                         cell.appendChild(cellText);
                         row.appendChild(cell);
                         date++;
+
+                        cell.addEventListener('click', function () {
+                            let dateArr = cell.id.split('_');
+                            console.log(dateArr);
+                            axios.post('/eventsCalendar', {
+                                month: dateArr[0],
+                                day: dateArr[1],
+                                year: dateArr[2]
+                            })
+                            .then(function (response) {
+                                console.log(response);
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                        });
                     }
                 }
                 tbl.appendChild(row);
