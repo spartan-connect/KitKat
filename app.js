@@ -100,8 +100,10 @@ app.get('/eventsCalendar', function(req, res) {
 });
 
 app.post('/eventsCalendar', function(req, res) {
-  // res.render('calendar');
   console.log(req.body.date);
+  dbModels.CalendarEventModel.find({date:`/${req.body.date}/`}, function(err, events) {
+    console.log(events);
+  });
 });
 
 app.get('/searchStudents', function(req, res) {
