@@ -101,7 +101,7 @@ app.get('/eventsCalendar', function(req, res) {
 
 app.post('/eventsCalendar', function(req, res) {
   // res.render('calendar');
-  console.log(req.body.month, req.body.day, req.body.year);
+  console.log(req.body.date);
 });
 
 app.get('/searchStudents', function(req, res) {

@@ -77,19 +77,16 @@
                     } else {
                         let cell = document.createElement("td");
                         let monthId = month + 1;
-                        cell.id = monthId + "_" + date + "_" + year;
+                        let dateId = (date < 10) ? "0" + date : date;
+                        cell.id = year + "-" + monthId + "-" + dateId;
                         let cellText = document.createTextNode(date);
                         cell.appendChild(cellText);
                         row.appendChild(cell);
                         date++;
 
                         cell.addEventListener('click', function () {
-                            let dateArr = cell.id.split('_');
-                            console.log(dateArr);
                             axios.post('/eventsCalendar', {
-                                month: dateArr[0],
-                                day: dateArr[1],
-                                year: dateArr[2]
+                                date: cell.id
                             })
                             .then(function (response) {
                                 console.log(response);
