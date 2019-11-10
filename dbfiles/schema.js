@@ -31,7 +31,7 @@ var StudentSchema = new Schema({
     },
     bio: String,
     club: [String],
-    calender: String,
+    calendar: String,
     major: String,
     Messages: Array
 });
@@ -67,21 +67,21 @@ var CampusPD = mongoose.model('CampusPD', CampusPDSchema);
 var Faculty = mongoose.model('Faculty', FacultySchema);
 var Student = mongoose.model('Student', StudentSchema);
 
-var CalenderSchema = new Schema({
-    calenderEvents: {
+var CalendarSchema = new Schema({
+    calendarEvents: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'CalenderEvent'
+        ref: 'CalendarEvent'
     }
 });
 
-var CalenderEventSchema = new Schema({
+var CalendarEventSchema = new Schema({
     date: Date,
     title: String,
     description: String
 });
 
-var Calender = mongoose.model('Calender', CalenderSchema);
-var CalenderEvent = mongoose.model('CalenderEvent', CalenderEventSchema);
+var Calendar = mongoose.model('Calendar', CalendarSchema);
+var CalendarEvent = mongoose.model('CalendarEvent', CalendarEventSchema);
 
 var ClubEventSchema = new Schema({
     name: String,
@@ -99,9 +99,9 @@ var ClubSchema = new Schema({
     name: String,
     description: String,
     memberList: [String],
-    calender: {
+    calendar: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Calender'
+        ref: 'Calendar'
     }
 });
 
@@ -161,8 +161,8 @@ module.exports = {
     FacultyModel: Faculty,
     StudentModel: Student,
     mongoose: mongoose,
-    CalenderModel: Calender,
-    CalenderEventModel: CalenderEvent,
+    CalendarModel: Calendar,
+    CalendarEventModel: CalendarEvent,
     ClubEventModel: ClubEvent,
     FacultyAnnouncementModel: FacultyAnnouncement,
     JobPostModel: JobPost,
