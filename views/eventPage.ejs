@@ -16,11 +16,17 @@
     <% include partials/nav.ejs %>
     <div id="main" class="main">
         <div style="height: 25px;"></div>
-        <h1><%= data.date%></h1>
-        <% for (let i = 0; i < data.eventsArr.length; i++) { %>
-            <h2 style="color: black; margin: 20px;"><%= data.eventsArr[i].title %></h2>
-            <li style="color: black; padding: 10px;"><%= data.eventsArr[i].description %></li>
-        <% } %>
+        <h1 style="margin-bottom: 50px;"><%= data.date%></h1>
+        <div style="width: 75%; margin: 10px auto;">
+            <ul id="clubList" class="list-group"> 
+                <% for (let i = 0; i < data.eventsArr.length; i++) { %>
+                    <li class="list-group-item" style="background-color: #f2f2f2;">
+                        <h2 style="color: black; margin: 15px;"><%= data.eventsArr[i].title %></h2>
+                        <p style="color: black; padding: 10px;"><%= data.eventsArr[i].description %></p>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
         <% if (data.eventsArr.length === 0) { %>
             <p style="color: black; margin: 20px;"> No events found!</p>
         <% } %>
