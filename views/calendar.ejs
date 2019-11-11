@@ -11,6 +11,8 @@
 </head>
 <style>
     td:hover {cursor: pointer;}
+
+    .hasEvent { color: red;}
 </style>
 <body>
     <% include partials/nav.ejs %>
@@ -45,6 +47,8 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        // var x = `<%= data %>`;
+        // console.log(`<%= data %>`);
         let today = new Date();
         let currentMonth = today.getMonth();
         let currentYear = today.getFullYear();
@@ -77,6 +81,14 @@
                         let monthId = month + 1;
                         let dateId = (date < 10) ? "0" + date : date;
                         cell.id = year + "-" + monthId + "-" + dateId;
+                        console.log(`<%= data %>`.length);
+                        console.log(`<%= data %>`);
+                        for (let i = 0; i < `<%= data %>`.length; i++) {
+                            // console.log("ahooo", `<%= data %>`.charAt(i));
+                            if (`<%= data %>`.includes(cell.id)) {
+                                cell.classList.add("hasEvent");
+                            }
+                        }
                         let cellText = document.createTextNode(date);
                         cell.appendChild(cellText);
                         row.appendChild(cell);
@@ -112,5 +124,7 @@
         renderCalendar(currentMonth, currentYear);
 
     </script>
+    
+   
  </body>
 </html>

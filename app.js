@@ -96,7 +96,14 @@ app.get('/clubDirectory', function(req, res) {
 });
 
 app.get('/eventsCalendar', function(req, res) {
-  res.render('calendar');
+  let datesArr = [];
+  dbModels.CalendarEventModel.find({}, { date: 1}, function(err, events) {
+    // console.log(events);
+    events.forEach(event => {
+      datesArr.push(event.date);
+    });
+    res.render('calendar', { data: datesArr });
+  })
 });
 
 app.get('/eventsCalendar/:date', function(req, res) {
@@ -105,7 +112,7 @@ app.get('/eventsCalendar/:date', function(req, res) {
     date: req.params.date,
     eventsArr: []
   };
-  dbModels.CalendarEventModel.find({date:`/${req.params.date}/`}, function(err, events) {
+  dbModels.CalendarEventModel.find({date: req.params.date }, function(err, events) {
     // console.log(events);
     events.forEach(event => {
       resObj.eventsArr.push(event);

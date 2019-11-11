@@ -75,7 +75,7 @@ var CalendarSchema = new Schema({
 });
 
 var CalendarEventSchema = new Schema({
-    date: Date,
+    date: String,
     title: String,
     description: String
 });
