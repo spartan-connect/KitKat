@@ -99,10 +99,19 @@ app.get('/eventsCalendar', function(req, res) {
   res.render('calendar');
 });
 
-app.post('/eventsCalendar', function(req, res) {
-  console.log(req.body.date);
-  dbModels.CalendarEventModel.find({date:`/${req.body.date}/`}, function(err, events) {
-    console.log(events);
+app.get('/eventsCalendar/:date', function(req, res) {
+  console.log(req.params.date);
+  let resObj = {
+    date: req.params.date,
+    eventsArr: []
+  };
+  dbModels.CalendarEventModel.find({date:`/${req.params.date}/`}, function(err, events) {
+    // console.log(events);
+    events.forEach(event => {
+      resObj.eventsArr.push(event);
+    })
+    console.log(resObj.eventsArr);
+    res.render('eventPage', { data: resObj });
   });
 });
 

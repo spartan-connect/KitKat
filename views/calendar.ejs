@@ -83,15 +83,7 @@
                         date++;
 
                         cell.addEventListener('click', function () {
-                            axios.post('/eventsCalendar', {
-                                date: cell.id
-                            })
-                            .then(function (response) {
-                                console.log(response);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
+                            window.location = `/eventsCalendar/${cell.id}`;
                         });
                     }
                 }
