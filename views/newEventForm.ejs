@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
+    <title>New Event</title>
+
+</head>
+
+<body style="background-color: #0055A2;">
+
+    <div class="newUser-form">
+        <h1>Create New Event</h1>
+        <form method="POST" action="/eventsCalendar">
+            <input type="date" name="date" placeholder="date" required />
+            <input type="text" name="title" placeholder="title" required />
+            <input type="text" name="description" placeholder="description" required>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+
+</html>

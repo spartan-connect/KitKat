@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
     <title>Calendar</title>
 </head>
 <style>
-    td:hover {cursor: pointer;}
+    td:hover {
+        cursor: pointer;
+    }
 
-    .hasEvent { background-color: blue; color: white}
+    .hasEvent {
+        background-color: blue;
+        color: white
+    }
 
-    .today { background-color: gray;}
+    .today {
+        background-color: gray;
+    }
 </style>
+
 <body>
     <% include partials/nav.ejs %>
     <div id="main" class="main">
@@ -38,11 +48,16 @@
                     </thead>
                     <tbody id="calendar-cells"></tbody>
                 </table>
-    
+
                 <div class="form-inline">
                     <button class="btn btn-outline-primary col-sm-6" onClick=previous()>Previous</button>
                     <button class="btn btn-outline-primary col-sm-6" onClick=next()>Next</button>
                 </div>
+
+                <form method="get" action="/newEventForm" class="form-inline justify-content-center">
+                    <button class="btn btn-outline-primary col-sm-6 text-center">+</button>
+                </form>
+
             </div>
         </div>
     </div>
@@ -58,8 +73,8 @@
         let todayMonth = today.getMonth();
         let todayYear = today.getFullYear();
 
-        let months = ["January", "Feburary", "March", "April", "May", "June", 
-        "July", "August", "September", "October", "November", "December"];
+        let months = ["January", "Feburary", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
 
         let calendarHeader = document.getElementById('calendar-header');
 
@@ -131,7 +146,8 @@
         renderCalendar(currentMonth, currentYear, todayDay, todayMonth, todayYear);
 
     </script>
-    
-   
- </body>
+
+
+</body>
+
 </html>

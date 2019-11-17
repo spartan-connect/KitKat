@@ -39,7 +39,7 @@ var urlencodedParser = bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.render('home');
 });
 
@@ -50,14 +50,14 @@ app.get('/', function(req, res) {
 
 // 400 status is an operation failed
 // just example of saving to db, doesn't perform login correctly
-app.post('/profile', function(req, res) {
+app.post('/profile', function (req, res) {
   var count = Object.keys(req.body).length;
   console.log(count);
   console.log(req.body);
 
   // Authorize login
   if (count == 2) {
-    dbModels.StudentModel.find(req.body, function(err, student) {
+    dbModels.StudentModel.find(req.body, function (err, student) {
       if (student.length == 0) {
         console.log("Can't Find User");
         res.render('home', { error: 'Incorrect Username/Password' });
@@ -88,16 +88,16 @@ app.post('/profile', function(req, res) {
   }
 });
 
-app.get('/campusMap', function(req, res) {
+app.get('/campusMap', function (req, res) {
   res.render('campusMap');
 });
-app.get('/clubDirectory', function(req, res) {
+app.get('/clubDirectory', function (req, res) {
   res.render('clubDirectory');
 });
 
-app.get('/eventsCalendar', function(req, res) {
+app.get('/eventsCalendar', function (req, res) {
   let datesArr = [];
-  dbModels.CalendarEventModel.find({}, { date: 1}, function(err, events) {
+  dbModels.CalendarEventModel.find({}, { date: 1 }, function (err, events) {
     // console.log(events);
     events.forEach(event => {
       datesArr.push(event.date);
@@ -106,13 +106,38 @@ app.get('/eventsCalendar', function(req, res) {
   })
 });
 
-app.get('/eventsCalendar/:date', function(req, res) {
+app.post('/eventsCalendar', function (req, res) {
+  console.log(req.body);
+  var data = new dbModels.CalendarEventModel(req.body);
+  data
+    .save()
+    .then(info => {
+      console.log('Calendar Event Info Saved to DB');
+    })
+    .catch(err => {
+      res.status(400).send('Unable to save to DB');
+    });
+  let datesArr = [];
+  dbModels.CalendarEventModel.find({}, { date: 1 }, function (err, events) {
+    // console.log(events);
+    events.forEach(event => {
+      datesArr.push(event.date);
+    });
+    res.render('calendar', { data: datesArr });
+  });
+});
+
+app.get('/newEventForm', function (req, res) {
+  console.log('hello');
+  res.render('newEventForm');
+});
+app.get('/eventsCalendar/:date', function (req, res) {
   console.log(req.params.date);
   let resObj = {
     date: req.params.date,
     eventsArr: []
   };
-  dbModels.CalendarEventModel.find({date: req.params.date }, function(err, events) {
+  dbModels.CalendarEventModel.find({ date: req.params.date }, function (err, events) {
     // console.log(events);
     events.forEach(event => {
       resObj.eventsArr.push(event);
@@ -122,18 +147,18 @@ app.get('/eventsCalendar/:date', function(req, res) {
   });
 });
 
-app.get('/searchStudents', function(req, res) {
+app.get('/searchStudents', function (req, res) {
   var arrayOfStudents = [];
-  dbModels.StudentModel.find(function(err, student) {
-    student.forEach(function(s) {
+  dbModels.StudentModel.find(function (err, student) {
+    student.forEach(function (s) {
       arrayOfStudents.push(s.username);
     });
     res.render('searchStudents', { data: arrayOfStudents });
   });
 });
-app.get('/searchProfile/:name', function(req, res) {
+app.get('/searchProfile/:name', function (req, res) {
   var name = req.params.name;
-  dbModels.StudentModel.findOne({ username: name }, function(err, student) {
+  dbModels.StudentModel.findOne({ username: name }, function (err, student) {
     if (err) return res.status(400).send('Database Error');
     if (student) res.render('searchProfile', { data: student });
     else res.status(400).send('Student not found');
@@ -141,7 +166,7 @@ app.get('/searchProfile/:name', function(req, res) {
 });
 
 // these are the temporary databases
-app.get('/channels', function(req, res) {
+app.get('/channels', function (req, res) {
   channelData = {
     users: [
       {
