@@ -4,6 +4,7 @@ var keys = require('../config/keys');
 mongoose.promise = global.promise;
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
+mongoose.set('useFindAndModify', true);
 // connect to database
 mongoose.connect(keys.dbURL);
 
