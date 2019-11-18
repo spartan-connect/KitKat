@@ -182,11 +182,15 @@
 			return "";
 		}
 		
-		// WIP; comment below describes what should be done here
 		// Updates the channel title display, so that it displays the currently selected channel.
 		// Uses the cookie data to determine which channel is currently selected/being viewed.
-		var c = document.cookie;
+		var c = getCookie("viewedChannelTitle");
 		document.getElementById("channelTitle").innerHTML = c;
+		
+		// this function is used to set a cookie, with cookie name and cookie's value
+		function setCookie(cname, cvalue) {
+			document.cookie = cname + "=" + cvalue + ";";
+		}
 	  </script>
 	  
 	  <section id = "channelSection">
@@ -194,7 +198,7 @@
 			Your channels
 			<% channels.forEach(function(channel) { %>
 				<% var channelId = channel.ID; %>
-				<br><br><a id="channelLink" title="Test" href = "" onclick="openChannel('<%= channelId %>')"><%= channel.name %></a>
+				<br><br><a id="channelLink" title="Test" href = "" onclick="openChannel('<%= channelId %>', '<%= channel.name %>')"><%= channel.name %></a>
 			<% })%>
 		</div>
 		<div id = "onlineList">
@@ -241,7 +245,10 @@
 		function setup() {
 			var myCookie = getCookie("viewedChannelId");
 			if (myCookie == "") // if cookie doesn't exist
-				document.cookie = "viewedChannelId=0"; // instead of 0, should be the id of the first channel on the user's own list of channels that they joined
+			{
+				document.setCookie("viewedChannelId", -1); // instead of 0, should be the id of the first channel on the user's own list of channels that they joined
+				document.setCookie("viewedChannelTitle", "Select a channel");
+			}
 		}
 		
 		// Note: I commented this part out because it was already declared in a <script> above, inside the html section
@@ -262,15 +269,16 @@
 			return "";
 		}*/
 		
-		// sets a variable value, which causes only messages belonging to the selected channel to be displayed
-		function openChannel(channelId) {
-			document.cookie = "viewedChannelId=" + channelId; // overwrite cookie value
+		// Updates cookie value to given channel id and channel name/title
+		function openChannel(channelId, channelName) {
+			setCookie("viewedChannelId", channelId);
+			setCookie("viewedChannelTitle", channelName);
 		}
 		
 		function addMessages(message){
 			if (message.currentChannelId == getCookie("viewedChannelId"))
 			{
-				$("#channels_msg_list").append(`<h6> ${message.name} <span style="font-size: 8px">${message.timestamp} ${message.currentChannelId} </span></h6><p style="text-align: left"> &nbsp&nbsp&nbsp&nbsp ${message.message} </p>`)
+				$("#channels_msg_list").append(`<h6> ${message.name} <span style="font-size: 8px">${message.timestamp} </span></h6><p style="text-align: left"> &nbsp&nbsp&nbsp&nbsp ${message.message} </p>`)
 			}
 			clearTextField();
 		}
