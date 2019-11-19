@@ -18,10 +18,10 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
   new GoogleStrategy({
-      clientID: keys.googleClientID,
-      clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
-    },
+    clientID: keys.googleClientID,
+    clientSecret: keys.googleClientSecret,
+    callbackURL: '/auth/google/callback'
+  },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({
         googleId: profile.id
@@ -33,8 +33,17 @@ passport.use(
           var emailArray = profile.emails[0].value.split('@');
           if (emailArray[1] == 'sjsu.edu') {
             new User({
-                googleId: profile.id
-              }).save()
+              googleId: profile.id,
+              name: profile.displayName,
+              firstName: profile._json.given_name,
+              lastName: profile._json.family_name,
+              pictureLink: profile._json.picture,
+              email: profile._json.email,
+              bio: "",
+              classList: [],
+              club: "",
+              major: ""
+            }).save()
               .then(user => done(null, user));
             console.log(profile);
           } else {
