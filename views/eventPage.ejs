@@ -28,7 +28,10 @@
                 <li class="list-group-item" style="background-color: #f2f2f2;">
                     <h2 style="color: black; margin: 15px;"><%= data.eventsArr[i].title %></h2>
                     <p style="color: black; padding: 10px;"><%= data.eventsArr[i].description %></p>
-                    <button class="btn btn-outline-primary col-sm-6">Remove Event</button>
+                    <button class="btn btn-outline-primary col-sm-6"
+                        id="<%= data.eventsArr[i].title + "~" + data.date%>" onClick="removeItem(this.id)">Remove
+                        Event</button>
+
                 </li>
                 <% } %>
             </ul>
@@ -38,6 +41,15 @@
         <% } %>
 
     </div>
+
+    <script>
+        function removeItem(id) {
+            console.log(id);
+            var result = id.split("~");
+            console.log(result[0] + " " + result[1]);
+            window.location = `/eventsCalendar/removed/${result[0]}/${result[1]}`;
+        }
+    </script>
 
 </body>
 

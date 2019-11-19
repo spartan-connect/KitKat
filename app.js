@@ -106,6 +106,29 @@ app.get('/eventsCalendar', function (req, res) {
   })
 });
 
+app.get('/eventsCalendar/removed/:title/:date', function (req, res) {
+  console.log(req.params.title);
+  console.log(req.params.date);
+  //removing event
+  dbModels.CalendarEventModel.deleteOne({ title: req.params.title, date: req.params.date }, function (err, result) {
+    if (err) {
+      console.log("Error of query");
+    }
+    else {
+      console.log(result);
+    }
+  });
+
+  //rerendering the calendar without the removed event
+  let datesArr = [];
+  dbModels.CalendarEventModel.find({}, { date: 1 }, function (err, events) {
+    events.forEach(event => {
+      datesArr.push(event.date);
+    });
+    res.render('calendar', { data: datesArr });
+  });
+});
+
 app.post('/eventsCalendar', function (req, res) {
   console.log(req.body);
   var data = new dbModels.CalendarEventModel(req.body);
@@ -128,7 +151,6 @@ app.post('/eventsCalendar', function (req, res) {
 });
 
 app.get('/newEventForm', function (req, res) {
-  console.log('hello');
   res.render('newEventForm');
 });
 app.get('/eventsCalendar/:date', function (req, res) {
