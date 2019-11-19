@@ -150,8 +150,18 @@ var SafteyWarning = mongoose.model('SafteyWarning', SafteyWarningSchema);
 
 // Saving array of Strings: https://stackoverflow.com/questions/35509611/mongoose-save-array-of-strings
 var ChannelSchema = new Schema({
-    Name: String,
-    MemberList: [String]
+     users: {
+		name: String,
+		status: String
+	},
+	messages: {
+		text: String,
+		msgId: Number
+	},
+	channels: {
+		name: String,
+		ID: Number
+	}
 });
 
 var Channel = mongoose.model('Channel', ChannelSchema);
