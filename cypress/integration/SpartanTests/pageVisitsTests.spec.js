@@ -17,15 +17,27 @@ describe('Search for a Student Page', function() {
     cy.visit('http://localhost:3000/searchStudents');
   })
 })
-/** 
-describe('Home Page', function() {
-  it('Tests if home page is working', function() {
-    cy.visit('http://localhost:3000');
+
+describe('Profile Page', function() {
+  it('Tests if profile page is working', function() {
+    cy.visit('http://localhost:3000/profile');
   })
 })
 
-describe('Home Page', function() {
+describe('Campus Map Page', function() {
   it('Tests if home page is working', function() {
-    cy.visit('http://localhost:3000');
+    cy.visit('http://localhost:3000/campusMap');
   })
-})*/
+})
+
+describe('Club Directory Page', function() {
+  it('Tests if home page is working', function() {
+    cy.visit('http://localhost:3000/clubDirectory');
+  })
+})
+
+describe('Event Calendar Page', function() {
+  it('Tests if event calendar page is working', function() {
+    cy.visit('http://localhost:3000/eventCalendar');
+  })
+})
