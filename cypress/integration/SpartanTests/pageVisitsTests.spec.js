@@ -13,8 +13,12 @@ describe('Channels Page', function() {
 })
 
 describe('Search for a Student Page', function() {
-  it('Tests if home page is working', function() {
+  it('Tests if search for a student page is working', function() {
     cy.visit('http://localhost:3000/searchStudents');
+    cy.get('#studentList>li').each(($el, index, $list) => {
+      cy.get('#studentList>li').eq(index).click()
+      cy.visit('http://localhost:3000/searchStudents');
+  })
   })
 })
 
@@ -25,13 +29,13 @@ describe('Profile Page', function() {
 })
 
 describe('Campus Map Page', function() {
-  it('Tests if home page is working', function() {
+  it('Tests if campus map page is working', function() {
     cy.visit('http://localhost:3000/campusMap');
   })
 })
 
 describe('Club Directory Page', function() {
-  it('Tests if home page is working', function() {
+  it('Tests if club directory page is working', function() {
     cy.visit('http://localhost:3000/clubDirectory');
   })
 })
