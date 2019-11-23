@@ -4,6 +4,7 @@ var keys = require('../config/keys');
 mongoose.promise = global.promise;
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
+mongoose.set('useFindAndModify', true);
 // connect to database
 mongoose.connect(keys.dbURL);
 
@@ -15,11 +16,21 @@ var {
 //Schema's
 // Making user schema for google OAuth
 var UserSchema = new Schema({
-    googleId: String
+    googleId: String,
+    name: String,
+    firstName: String,
+    lastName: String,
+    pictureLink: String,
+    email: String,
+    bio: String,
+    classList: Array,
+    club: String,
+    major: String,
+    //Messages: Array
 });
 
 var User = mongoose.model('User', UserSchema);
-
+/*
 var StudentSchema = new Schema({
     username: String,
     email: String,
@@ -34,7 +45,7 @@ var StudentSchema = new Schema({
     calendar: String,
     major: String,
     Messages: Array
-});
+});*/
 
 var MessageSchema = new Schema({
     sender: String,
@@ -65,7 +76,7 @@ var CampusPDSchema = new Schema({
 var Message = mongoose.model('Message', MessageSchema);
 var CampusPD = mongoose.model('CampusPD', CampusPDSchema);
 var Faculty = mongoose.model('Faculty', FacultySchema);
-var Student = mongoose.model('Student', StudentSchema);
+//var Student = mongoose.model('Student', StudentSchema);
 
 var CalendarSchema = new Schema({
     calendarEvents: {
@@ -139,8 +150,18 @@ var SafteyWarning = mongoose.model('SafteyWarning', SafteyWarningSchema);
 
 // Saving array of Strings: https://stackoverflow.com/questions/35509611/mongoose-save-array-of-strings
 var ChannelSchema = new Schema({
-    Name: String,
-    MemberList: [String]
+     users: {
+		name: String,
+		status: String
+	},
+	messages: {
+		text: String,
+		msgId: Number
+	},
+	channels: {
+		name: String,
+		ID: Number
+	}
 });
 
 var Channel = mongoose.model('Channel', ChannelSchema);
@@ -159,7 +180,7 @@ module.exports = {
     GroupChatModel: GroupChat,
     CampusPDModel: CampusPD,
     FacultyModel: Faculty,
-    StudentModel: Student,
+    //StudentModel: Student,
     mongoose: mongoose,
     CalendarModel: Calendar,
     CalendarEventModel: CalendarEvent,

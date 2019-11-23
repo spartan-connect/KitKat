@@ -171,7 +171,7 @@ ul.sidenav li a:hover:not(.active) {
 
 #studentSearchInput{
   width: 90%;
-  font-size: 36px;
+  font-size: 24px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
@@ -183,7 +183,7 @@ ul.sidenav li a:hover:not(.active) {
 }
 #studentList li a{
   display: block;
-  color: white;
+  color: black;
   padding: 8px 16px;
   text-decoration: none;
 }

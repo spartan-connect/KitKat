@@ -50,42 +50,31 @@ app.get('/', function (req, res) {
 
 // 400 status is an operation failed
 // just example of saving to db, doesn't perform login correctly
-app.post('/profile', function (req, res) {
-  var count = Object.keys(req.body).length;
-  console.log(count);
+app.get('/profile', function (req, res) {
   console.log(req.body);
 
   // Authorize login
-  if (count == 2) {
-    dbModels.StudentModel.find(req.body, function (err, student) {
-      if (student.length == 0) {
-        console.log("Can't Find User");
-        res.render('home', { error: 'Incorrect Username/Password' });
-      } else if (
-        req.body.username == student[0].username &&
-        req.body.password == student[0].password
-      ) {
-        console.log(student);
-        console.log(student[0].username);
-        console.log(student[0].password);
-        console.log('Student Account was found');
-        res.render('profile', { data: student[0] });
-      }
-    });
+  if (req.user.major == "") {
+    res.render('newUserForm')
   }
   // save form information into DB
   else {
-    var data = new dbModels.StudentModel(req.body);
-    data
-      .save()
-      .then(info => {
-        console.log('Student Info Saved to DB');
-      })
-      .catch(err => {
-        res.status(400).send('Unable to save to DB');
-      });
-    res.render('profile', { data: req.body });
+    res.render('profile', { data: req.user });
   }
+});
+
+app.post('/dbNewUserSave', function (req, res) {
+  console.log(req.body);
+  console.log(req.user);
+  let update = {
+    $set: {
+      bio: req.body.bio,
+      major: req.body.major,
+      club: req.body.club
+    }
+  }
+  dbModels.UserModel.findOneAndUpdate({ _id: req.user._id }, update, function (err, user) { if (err) { throw err; } else { console.log(user); } });
+  res.redirect('/profile');
 });
 
 app.get('/campusMap', function (req, res) {
@@ -189,80 +178,43 @@ app.get('/searchProfile/:name', function (req, res) {
 
 // these are the temporary databases
 app.get('/channels', function (req, res) {
+	currentUsername = "undefined_username"; // initially set username to undefined_username as default
+	currentUsername = req.user.firstName + " " + req.user.lastName;
   channelData = {
-    users: [
-      {
-        name: 'Bob',
-        status: 'offline'
-      },
-      {
-        name: 'Bob2',
-        status: 'online'
-      },
-      {
-        name: 'Bob3',
-        status: 'online'
-      },
-      {
-        name: 'John',
-        status: 'offline'
-      },
-      {
-        name: 'Apple',
-        status: 'offline'
-      },
-      {
-        name: 'Seed',
-        status: 'offline'
-      },
-      {
-        name: 'Johnny',
-        status: 'online'
-      },
-      {
-        name: 'TestName',
-        status: 'offline'
-      }
+    "users": [
+      { "name": 'Bob', "status": 'offline' },
+      { "name": 'Bob2', "status": 'online' },
+      { "name": 'Bob3', "status": 'online' },
+      { "name": 'John', "status": 'offline' },
+      { "name": 'Apple', "status": 'offline' },
+      { "name": 'Seed', "status": 'offline' },
+      { "name": 'Johnny', "status": 'online' },
+      { "name": 'TestName', "status": 'offline' }
     ],
-    messages: [
-      {
-        text: 'Hi everyone!'
-      },
-      {
-        text: 'Hello everyone!'
-      }
+    "messages": [
+      { "text": 'Hi everyone!', "msgId": 0},
+      { "text": 'Hello everyone!', "msgId": 1 }
     ],
-
-    channels: [
-      {
-        name: 'CS160',
-        ID: 0
-      },
-      {
-        name: 'Fun Channel',
-        ID: 1
-      },
-      {
-        name: 'Lost and Found',
-        ID: 2
-      },
-      {
-        name: 'Marketplace!',
-        ID: 3
-      },
-      {
-        name: 'AveryLongChannelNameAaaaaaaa',
-        ID: 4
-      }
-    ]
-  };
-
+    "channels": [
+      { "name": 'CS160', "ID": 0 },
+      { "name": 'Fun Channel', "ID": 1 },
+      { "name": 'Lost and Found', "ID": 2 },
+      { "name": 'Marketplace!', "ID": 3 },
+      { "name": 'AveryLongChannelNameAaaaaaaa', "ID": 4 }
+    ],
+	"currentUser": [
+		{"name": currentUsername}
+	]
+  }
+  
   res.render('channels', channelData);
 });
 
 var MessageTest = mongoose.model('MessageTest', {
   name: String,
-  message: String
+  timestamp: String,
+  message: String,
+  currentChannelId: String
 });
 
 app.get('/messages', (req, res) => {
