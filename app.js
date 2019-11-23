@@ -160,16 +160,16 @@ app.get('/eventsCalendar/:date', function (req, res) {
 
 app.get('/searchStudents', function (req, res) {
   var arrayOfStudents = [];
-  dbModels.StudentModel.find(function (err, student) {
-    student.forEach(function (s) {
-      arrayOfStudents.push(s.username);
+  dbModels.UserModel.find(function (err, user) {
+    user.forEach(function (u) {
+      arrayOfStudents.push(u.name);
     });
     res.render('searchStudents', { data: arrayOfStudents });
   });
 });
 app.get('/searchProfile/:name', function (req, res) {
   var name = req.params.name;
-  dbModels.StudentModel.findOne({ username: name }, function (err, student) {
+  dbModels.UserModel.findOne({ name: name }, function (err, student) {
     if (err) return res.status(400).send('Database Error');
     if (student) res.render('searchProfile', { data: student });
     else res.status(400).send('Student not found');
@@ -178,8 +178,8 @@ app.get('/searchProfile/:name', function (req, res) {
 
 // these are the temporary databases
 app.get('/channels', function (req, res) {
-	currentUsername = "undefined_username"; // initially set username to undefined_username as default
-	currentUsername = req.user.firstName + " " + req.user.lastName;
+  currentUsername = "undefined_username"; // initially set username to undefined_username as default
+  currentUsername = req.user.firstName + " " + req.user.lastName;
   channelData = {
     "users": [
       { "name": 'Bob', "status": 'offline' },
@@ -192,7 +192,7 @@ app.get('/channels', function (req, res) {
       { "name": 'TestName', "status": 'offline' }
     ],
     "messages": [
-      { "text": 'Hi everyone!', "msgId": 0},
+      { "text": 'Hi everyone!', "msgId": 0 },
       { "text": 'Hello everyone!', "msgId": 1 }
     ],
     "channels": [
@@ -202,11 +202,11 @@ app.get('/channels', function (req, res) {
       { "name": 'Marketplace!', "ID": 3 },
       { "name": 'AveryLongChannelNameAaaaaaaa', "ID": 4 }
     ],
-	"currentUser": [
-		{"name": currentUsername}
-	]
+    "currentUser": [
+      { "name": currentUsername }
+    ]
   }
-  
+
   res.render('channels', channelData);
 });
 
