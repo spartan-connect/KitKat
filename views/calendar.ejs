@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
+    <title>Calendar</title>
+</head>
+<style>
+    td:hover {
+        cursor: pointer;
+    }
+
+    .hasEvent {
+        background-color: blue;
+        color: white
+    }
+
+    .today {
+        background-color: gray;
+    }
+</style>
+
+<body>
+    <% include partials/nav.ejs %>
+    <div id="main" class="main">
+        <div style="height: 25px;"></div>
+        <h1>Calendar</h1>
+        <div class="wrapper">
+            <div style="margin: 10px auto" class="card">
+                <h3 class="card-header" id="calendar-header">Month And Year</h3>
+                <table class="table table-bordered table-responsive" id="calendar">
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar-cells"></tbody>
+                </table>
+
+                <div class="form-inline">
+                    <button class="btn btn-outline-primary col-sm-6" onClick=previous()>Previous</button>
+                    <button class="btn btn-outline-primary col-sm-6" onClick=next()>Next</button>
+                </div>
+
+                <form method="get" action="/newEventForm" class="form-inline justify-content-center">
+                    <button class="btn btn-outline-primary col-sm-6 text-center">+</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        // var x = `<%= data %>`;
+        // console.log(`<%= data %>`);
+        let today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+        let todayDay = today.getDate();
+        let todayMonth = today.getMonth();
+        let todayYear = today.getFullYear();
+
+        let months = ["January", "Feburary", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+
+        let calendarHeader = document.getElementById('calendar-header');
+
+        function renderCalendar(month, year, todayDay, todayMonth, todayYear) {
+            let firstDay = new Date(year, month).getDay();
+            let daysInMonth = 32 - new Date(year, month, 32).getDate();
+            let tbl = document.getElementById("calendar-cells");
+            tbl.innerHTML = "";
+            calendarHeader.innerHTML = months[month] + " " + year;
+            let date = 1;
+
+            for (let i = 0; i < 6; i++) {
+                let row = document.createElement('tr');
+
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < firstDay) {
+                        let cell = document.createElement("td");
+                        let cellText = document.createTextNode("");
+                        cell.appendChild(cellText);
+                        row.appendChild(cell);
+                    } else if (date > daysInMonth) {
+                        break;
+                    } else {
+                        let cell = document.createElement("td");
+                        let monthId = month + 1;
+                        let dateId = (date < 10) ? "0" + date : date;
+                        cell.id = year + "-" + monthId + "-" + dateId;
+                        for (let i = 0; i < `<%= data %>`.length; i++) {
+                            // console.log("ahooo", `<%= data %>`.charAt(i));
+                            if (`<%= data %>`.includes(cell.id)) {
+                                cell.classList.add("hasEvent");
+                            }
+                        }
+                        if (date === todayDay && currentMonth === todayMonth && currentYear === todayYear) {
+                            cell.classList.add("today");
+                        }
+                        let cellText = document.createTextNode(date);
+                        cell.appendChild(cellText);
+                        row.appendChild(cell);
+                        date++;
+
+                        cell.addEventListener('click', function () {
+                            window.location = `/eventsCalendar/${cell.id}`;
+                        });
+                    }
+                }
+                tbl.appendChild(row);
+            }
+        }
+
+        function previous() {
+            if (currentMonth === 0) {
+                currentYear--;
+                currentMonth = 11;
+            } else {
+                currentMonth--;
+            }
+            renderCalendar(currentMonth, currentYear, todayDay, todayMonth, todayYear);
+        }
+
+        function next() {
+            if (currentMonth === 11) {
+                currentYear++;
+            }
+            currentMonth = (currentMonth + 1) % 12;
+            renderCalendar(currentMonth, currentYear, todayDay, todayMonth, todayYear);
+        }
+
+        renderCalendar(currentMonth, currentYear, todayDay, todayMonth, todayYear);
+
+    </script>
+
+
+</body>
+
+</html>

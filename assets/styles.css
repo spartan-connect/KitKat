@@ -214,7 +214,8 @@ ul.sidenav li a:hover:not(.active) {
 }
 
 .newUser-form input[type="text"],
-.newUser-form input[type="email"]
+.newUser-form input[type="email"],
+.newUser-form input[type="date"]
 {
 	outline: none;
 	box-sizing: border-box;
