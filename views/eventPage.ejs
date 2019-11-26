@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
+    <title>Calendar</title>
+</head>
+<style>
+    td:hover {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <% include partials/nav.ejs %>
+    <div id="main" class="main">
+        <div style="height: 25px;"></div>
+        <h1 style="margin-bottom: 50px;"><%= data.date%></h1>
+        <div style="width: 75%; margin: 10px auto;">
+            <ul id="clubList" class="list-group">
+                <% for (let i = 0; i < data.eventsArr.length; i++) { %>
+                <li class="list-group-item" style="background-color: #f2f2f2;">
+                    <h2 style="color: black; margin: 15px;"><%= data.eventsArr[i].title %></h2>
+                    <p style="color: black; padding: 10px;"><%= data.eventsArr[i].description %></p>
+                    <button class="btn btn-outline-primary col-sm-6"
+                        id="<%= data.eventsArr[i].title + "~" + data.date%>" onClick="removeItem(this.id)">Remove
+                        Event</button>
+
+                </li>
+                <% } %>
+            </ul>
+        </div>
+        <% if (data.eventsArr.length === 0) { %>
+        <p style="color: black; margin: 20px;"> No events found!</p>
+        <% } %>
+
+    </div>
+
+    <script>
+        function removeItem(id) {
+            console.log(id);
+            var result = id.split("~");
+            console.log(result[0] + " " + result[1]);
+            window.location = `/eventsCalendar/removed/${result[0]}/${result[1]}`;
+        }
+    </script>
+
+</body>
+
+</html>
