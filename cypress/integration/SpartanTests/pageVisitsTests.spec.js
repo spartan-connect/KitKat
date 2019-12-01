@@ -9,6 +9,16 @@ describe('Home Page', function () {
 describe('Channels Page', function () {
   it('Tests if channels page is working', function () {
     cy.visit('http://localhost:3000/channels');
+    cy.wait(1500);
+    cy.get('textarea').click().type("This is a Cypress Test Message");
+    cy.contains('Send').click();
+    cy.wait(1500);
+  })
+})
+
+describe('Profiles Page', function () {
+  it('Tests if profile  page is working', function () {
+    cy.visit('http://localhost:3000/profile');
   })
 })
 
@@ -42,6 +52,6 @@ describe('Club Directory Page', function() {
 
 describe('Event Calendar Page', function() {
   it('Tests if event calendar page is working', function() {
-    cy.visit('http://localhost:3000/eventCalendar');
+    cy.visit('http://localhost:3000/eventsCalendar');
   })
 })
