@@ -1,3 +1,5 @@
+//Assumes your on december 2019, and no event has been created for the 29th
+
 describe('Add Event', function () {
     it('Test if adding event is working', function () {
         cy.visit('http://localhost:3000/eventsCalendar');
