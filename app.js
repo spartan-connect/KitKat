@@ -195,7 +195,8 @@ app.get('/searchProfile/:name', function (req, res) {
 // these are the temporary databases
 app.get('/channels', function (req, res) {
   currentUsername = "undefined_username"; // initially set username to undefined_username as default
-  currentUsername = testUser.firstName + " " + testUser.lastName;
+  //currentUsername = testUser.firstName + " " + testUser.lastName;
+  currentUsername = "Test Name"; //req.user.firstName + " " + req.user.lastName;
   channelData = {
     "users": [
       { "name": 'Bob', "status": 'offline' },
