@@ -11,200 +11,198 @@ GRAY:
   rgb: (147,149,151)
 */
 #jumbotron {
-    background-color: rgb(0,85,162);
-  }
-  
-  h1 {
+  background-color: rgb(0, 85, 162);
+}
+
+h1 {
   text-align: center;
   color: white;
   font-family: 'Muli', sans-serif;
   font-size: 48pt;
-  }
-  
+}
+
 .vision {
-    margin: 10px auto;
-    color: #E5A823;
+  margin: 10px auto;
+  color: #e5a823;
 }
-  
+
 .form-actions {
-    margin: 0;
-    background-color: transparent;
-    text-align: center;
+  margin: 0;
+  background-color: transparent;
+  text-align: center;
 }
-  h2 {
-  color: #E5A823;
+h2 {
+  color: #e5a823;
   /* color: #01FE01; */
   font-family: 'Muli', sans-serif;
   font-size: 24pt;
   margin-left: 24px;
-  }
-  
-  /* for profile page */
-  p {
-    text-align: center
-  }
-  
-  /* Normal white Button as seen on Google.com*/
-  button {
+}
+
+/* for profile page */
+p {
+  text-align: center;
+}
+
+/* Normal white Button as seen on Google.com*/
+button {
   color: #444444;
-  background: #F3F3F3;
-  border: 1px #DADADA solid;
+  background: #f3f3f3;
+  border: 1px #dadada solid;
   padding: 5px 10px;
   border-radius: 2px;
   font-weight: bold;
   font-size: 9pt;
   outline: none;
-  }
-  
-  button:hover {
-  border: 1px #C6C6C6 solid;
-  box-shadow: 1px 1px 1px #EAEAEA;
+}
+
+button:hover {
+  border: 1px #c6c6c6 solid;
+  box-shadow: 1px 1px 1px #eaeaea;
   color: #333333;
-  background: #F7F7F7;
-  }
-  
-  button:active {
-  box-shadow: inset 1px 1px 1px #DFDFDF;
-  }
-  
-  .wrapper {
+  background: #f7f7f7;
+}
+
+button:active {
+  box-shadow: inset 1px 1px 1px #dfdfdf;
+}
+
+.wrapper {
   text-align: center;
-  }
-  
-  ul.sidenav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    top: 50px;
-    width: 200px;
-    background-color: #E5A823;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-  }
-  
-  ul.sidenav li a{
-    display: block;
-    color: black;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-  
-  ul.sidenav li a.active {
-    background-color: #939597;
-    color: black;
-  }
-  
-  ul.sidenav li a:hover:not(.active) {
-    background-color: #939597;
-    color: white;
-  }
-  
-  .logo{
-    width: 25%;
-    height: auto;
-  }
-  
-  .topnav {
-    height: 50px;
-    background-color: #E5A823;
-    overflow: hidden;
-  }
-  
-  .topnav a {
-    float: left;
-    text-align: center;
-    padding: 5px 16px;
-    text-decoration: none;
-    font-size: 25px;
-  }
-  
-  .topnav a button{
-    padding: 0;
-    border: none;
-    background: none;
-    font-size: 30px;
-  }
-  
-  .topnav a button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.4),0 17px 50px 0 rgba(0,0,0,0.4);
-  }
-  
-  #clubSearchInput{
-    width: 90%;
-    font-size: 36px;
-    padding: 12px 20px 12px 40px;
-    border: 1px solid #ddd;
-    margin-bottom: 12px;
-  }
-  #clubList{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  #clubList li a{
-    display: block;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-  #clublist li a:hover:not(.header) {
-    background-color: #939597;
-  }
-  
-  
-  .newUser-form {
-    font: 95% Arial, Helvetica, sans-serif;
-      max-width: 400px;
-      margin: 10px auto;
-      padding: 16px;
-    background: #F7F7F7;
-  }
-  
-  .newUser-form h1 {
-    background: #E5A823;
-      padding: 20px 0;
-      font-size: 140%;
-      font-weight: 300;
-      text-align: center;
-      color: #0055A2;
-      margin: -16px -16px 16px -16px;
-  }
-  
-  .newUser-form input[type="text"],
-  .newUser-form input[type="email"]
-  {
-      outline: none;
-      box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      width: 100%;
-      background: #fff;
-      margin-bottom: 4%;
-      border: 1px solid #ccc;
-      padding: 3%;
-      color: #555;
-      font: 95% Arial, Helvetica, sans-serif;
-  }
-  
-  .newUser-form input[type="submit"]{
-      box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      width: 100%;
-      padding: 3%;
-      background: #E5A823;
-      border-bottom: 2px solid #E5A823;
-      border-top-style: none;
-      border-right-style: none;
-      border-left-style: none;	
-      color: #0055A2;
-  }
-  
-  .newUser-form input[type="submit"]:hover {
-    background: rgb(177, 127, 19);
-  }
-  
-  .error {
-    color: red;
-  }
+}
+
+ul.sidenav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  top: 50px;
+  width: 200px;
+  background-color: #e5a823;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+ul.sidenav li a {
+  display: block;
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+ul.sidenav li a.active {
+  background-color: #939597;
+  color: black;
+}
+
+ul.sidenav li a:hover:not(.active) {
+  background-color: #939597;
+  color: white;
+}
+
+.logo {
+  width: 25%;
+  height: auto;
+}
+
+.topnav {
+  height: 50px;
+  background-color: #e5a823;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 5px 16px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.topnav a button {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 30px;
+}
+
+.topnav a button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.4), 0 17px 50px 0 rgba(0, 0, 0, 0.4);
+}
+
+#clubSearchInput {
+  width: 90%;
+  font-size: 36px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+#clubList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#clubList li a {
+  display: block;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+#clublist li a:hover:not(.header) {
+  background-color: #939597;
+}
+
+.newUser-form {
+  font: 95% Arial, Helvetica, sans-serif;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 16px;
+  background: #f7f7f7;
+}
+
+.newUser-form h1 {
+  background: #e5a823;
+  padding: 20px 0;
+  font-size: 140%;
+  font-weight: 300;
+  text-align: center;
+  color: #0055a2;
+  margin: -16px -16px 16px -16px;
+}
+
+.newUser-form input[type='text'],
+.newUser-form input[type='email'] {
+  outline: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 3%;
+  color: #555;
+  font: 95% Arial, Helvetica, sans-serif;
+}
+
+.newUser-form input[type='submit'] {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  padding: 3%;
+  background: #e5a823;
+  border-bottom: 2px solid #e5a823;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  color: #0055a2;
+}
+
+.newUser-form input[type='submit']:hover {
+  background: rgb(177, 127, 19);
+}
+
+.error {
+  color: red;
+}
