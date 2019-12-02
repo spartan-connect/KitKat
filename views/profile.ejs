@@ -1,37 +1,78 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <title>Profile pages</title>
+    <style>
+      img.center {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
 
-<head>
-  <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap" rel="stylesheet">
-  <title>Profile pages</title>
+  <body>
+    <div class="wrapper">
+      <% include partials/nav.ejs %>
+      <div id="main" class="main"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="jumbotron">
+              <%if (data.pictureLink == null){%>
+              <img src="assets/noProfileImage.png" class="center profilePic" />
+              <% }else{%> <img src= <%=data.pictureLink.toString()%>
+              class="rounded-circle center profilePic"> <%}%>
+              <h1><%= data.firstName %> <%= data.lastName %></h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="jumbotron">
+              <h3>Bio</h3>
+              <p><%= data.bio%></p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="jumbotron">
+              <h3>Major</h3>
+              <p><%= data.major%></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="jumbotron">
+              <h3>Classes</h3>
+              <p><%= data.classList%></p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="jumbotron">
+              <h3>Clubs</h3>
+              <p><%= data.club%></p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-</head>
-
-<body>
-  <div class="wrapper">
-    <% include partials/nav.ejs %>
-    <div id="main" class="main">
-      <div style="height: 25px;"></div>
-      <button
-        class="btn btn-primary"
-        OnClick=" location.href='/' "
-        style="background-color: #E5A823; border: none;">
-      Back</button>
-      <h1 style="color: black;">Welcome to your profile, <%= data.firstName %> <%= data.lastName %>! </h1>
-       <p>Bio: <%= data.bio%></p>
-      <p>Major: <%= data.major%></p>
-      <p>Classes: <%= data.classList%></p>
-      <p>Clubs: <%= data.club%></p>
-      <p>Profile Picture: </p>
-      <%if (data.pictureLink == null){%>
-      <img src="assets/noProfileImage.png" class="profilePic">
-      <% }else{%>
-      <img src= <%=data.pictureLink.toString()%> class="profilePic">
-      <%}%>
+      <!--  
+        <p>Profile Picture:</p>
+        <%if (data.pictureLink == null){%>
+        <img src="assets/noProfileImage.png" class="profilePic" />
+        <% }else{%> <img src= <%=data.pictureLink.toString()%>
+        class="profilePic"> <%}%> -->
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
