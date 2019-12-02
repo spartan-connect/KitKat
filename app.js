@@ -10,6 +10,20 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 // var calendarScripts = require('./calendarScripts.js');
 
+var testUser = { classList: [],
+  _id: null,
+  googleId: '102490116536433183287',
+  name: 'Carson Sanders',
+  firstName: 'Carson',
+  lastName: 'Sanders',
+  pictureLink:
+   'https://lh3.googleusercontent.com/a-/AAuE7mA6lht6oZLFypF-GrfECugYYGGGNPvTcr09tCge',
+  email: 'carson.sanders@sjsu.edu',
+  bio: 'Hey',
+  club: null,
+  major: 'Computer Science',
+  __v: 0 }
+
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -51,16 +65,18 @@ app.get('/', function (req, res) {
 // 400 status is an operation failed
 // just example of saving to db, doesn't perform login correctly
 app.get('/profile', function (req, res) {
-  console.log(req.body);
+  //console.log(req.body);
 
   // Authorize login
+  /** 
   if (req.user.major == "") {
     res.render('newUserForm')
   }
+  */
   // save form information into DB
-  else {
-    res.render('profile', { data: req.user });
-  }
+  //else {
+    res.render('profile', { data: testUser });
+  //}
 });
 
 app.post('/dbNewUserSave', function (req, res) {
@@ -179,7 +195,8 @@ app.get('/searchProfile/:name', function (req, res) {
 // these are the temporary databases
 app.get('/channels', function (req, res) {
   currentUsername = "undefined_username"; // initially set username to undefined_username as default
-  currentUsername = req.user.firstName + " " + req.user.lastName;
+  //currentUsername = testUser.firstName + " " + testUser.lastName;
+  currentUsername = "Test Name"; //req.user.firstName + " " + req.user.lastName;
   channelData = {
     "users": [
       { "name": 'Bob', "status": 'offline' },

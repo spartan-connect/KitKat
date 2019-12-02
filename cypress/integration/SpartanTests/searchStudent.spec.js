@@ -25,6 +25,32 @@ describe('Visible Test', function() {
     cy.get('a[href*="Crystal Kwong"]').should('be.visible')
     cy.get('a[href*="Carson Sanders"]').should('not.be.visible')
   })
+  it('type al', function() {
+    cy.visit('http://localhost:3000/searchStudents')
+    cy.get('input').type('al')
+    cy.get('a[href*="Dylan Ceronio"]').should('not.be.visible')
+    cy.get('a[href*="Alora Clem"]').should('be.visible')
+    cy.get('a[href*="Maan Singh"]').should('not.be.visible')
+    cy.get('a[href*="Crystal Kwong"]').should('be.visible')
+    cy.get('a[href*="Carson Sanders"]').should('not.be.visible')
+  })
+  it('do not type anthing', function() {
+    cy.visit('http://localhost:3000/searchStudents')
+    cy.get('a[href*="Dylan Ceronio"]').should('be.visible')
+    cy.get('a[href*="Alora Clem"]').should('be.visible')
+    cy.get('a[href*="Maan Singh"]').should('be.visible')
+    cy.get('a[href*="Crystal Kwong"]').should('be.visible')
+    cy.get('a[href*="Carson Sanders"]').should('be.visible')
+  })
+  it('type noMatch', function() {
+    cy.visit('http://localhost:3000/searchStudents')
+    cy.get('input').type('noMatch')
+    cy.get('a[href*="Dylan Ceronio"]').should('not.be.visible')
+    cy.get('a[href*="Alora Clem"]').should('not.be.visible')
+    cy.get('a[href*="Maan Singh"]').should('not.be.visible')
+    cy.get('a[href*="Crystal Kwong"]').should('not.be.visible')
+    cy.get('a[href*="Carson Sanders"]').should('not.be.visible')
+  })
 })
 
 describe('Click Test', function() {
