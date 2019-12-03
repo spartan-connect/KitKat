@@ -3,7 +3,6 @@
 describe('Home Page', function () {
   it('Tests if home page is working', function () {
     cy.visit('http://localhost:3000');
-    cy.get('')
   })
 })
 
