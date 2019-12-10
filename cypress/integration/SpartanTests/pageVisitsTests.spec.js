@@ -47,12 +47,8 @@ describe('Campus Map Page', function() {
 describe('Club Directory Page', function () {
   it('Tests if club directory page is working', function () {
     cy.visit('http://localhost:3000/clubDirectory');
-    cy.get('#clubList>li').each(($el, index, $list) => {
-      cy.get('#clubList>li').eq(0);
-      cy.visit('http://localhost:3000/clubDirectory');
-    });
-  });
-});
+  })
+})
 
 describe('Event Calendar Page', function() {
   it('Tests if event calendar page is working', function() {
