@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Campus Map</title>
 
-  </head>
+<head>
+  <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Campus Map</title>
 
-  <body>
-    <% include partials/nav.ejs %>
-    <div id="main" class="main">
-      <div style="height: 25px;"></div>
-      <h1 style="font-size: 4em;">SJSU Campus Map </h1>
-      <img src="assets/SJSUMap.jpg" class="center">
-    </div>
-  </body>
+</head>
+
+<body>
+  <% include partials/nav.ejs %>
+  <div id="main" class="main">
+    <div style="height: 25px;"></div>
+    <h1 style="font-size: 4em;">SJSU Campus Map </h1>
+    <iframe class="center"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.3090416338723!2d-121.88326554941574!3d37.33519164500243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fccb864de43d5%3A0x397ffe721937340e!2sSan%20Jos%C3%A9%20State%20University!5e0!3m2!1sen!2sus!4v1575950438123!5m2!1sen!2sus"
+      width="800" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+  </div>
+
+</body>
+
 </html>
